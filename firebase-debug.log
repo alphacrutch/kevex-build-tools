@@ -1,0 +1,458 @@
+[debug] [2026-04-08T21:57:41.610Z] ----------------------------------------------------------------------
+[debug] [2026-04-08T21:57:41.616Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-04-08T21:57:41.617Z] CLI Version:   15.11.0
+[debug] [2026-04-08T21:57:41.617Z] Platform:      win32
+[debug] [2026-04-08T21:57:41.617Z] Node Version:  v24.14.0
+[debug] [2026-04-08T21:57:41.617Z] Time:          Wed Apr 08 2026 17:57:41 GMT-0400 (Bolivia Time)
+[debug] [2026-04-08T21:57:41.617Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-08T21:57:45.635Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-08T21:57:45.636Z] > authorizing via signed-in user (kevexsolutions@gmail.com)
+[debug] [2026-04-08T21:57:45.636Z] [iam] checking project kevexsolutions-tt for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebase.projects.update","firebaseauth.configs.update","firebasehosting.sites.update"]
+[debug] [2026-04-08T21:57:45.638Z] Checked if tokens are valid: false, expires at: 1775685774079
+[debug] [2026-04-08T21:57:45.639Z] Checked if tokens are valid: false, expires at: 1775685774079
+[debug] [2026-04-08T21:57:45.639Z] > refreshing access token with scopes: []
+[debug] [2026-04-08T21:57:45.642Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-04-08T21:57:45.642Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-04-08T21:57:46.244Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-04-08T21:57:46.244Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-04-08T21:57:46.259Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevexsolutions-tt:testIamPermissions [none]
+[debug] [2026-04-08T21:57:46.259Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevexsolutions-tt:testIamPermissions  x-goog-user-project=kevexsolutions-tt
+[debug] [2026-04-08T21:57:46.259Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevexsolutions-tt:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebase.projects.update","firebaseauth.configs.update","firebasehosting.sites.update"]}
+[debug] [2026-04-08T21:57:47.211Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevexsolutions-tt:testIamPermissions 200
+[debug] [2026-04-08T21:57:47.211Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevexsolutions-tt:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebase.projects.update","firebaseauth.configs.update","firebasehosting.sites.update"]}
+[debug] [2026-04-08T21:57:47.212Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:47.212Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:47.213Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kevexsolutions-tt [none]
+[debug] [2026-04-08T21:57:47.936Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kevexsolutions-tt 200
+[debug] [2026-04-08T21:57:47.936Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kevexsolutions-tt {"projectId":"kevexsolutions-tt","projectNumber":"709230096628","displayName":"kevexsolutions","name":"projects/kevexsolutions-tt","resources":{"hostingSite":"kevexsolutions-tt"},"state":"ACTIVE","etag":"1_3a58b789-c9b8-464e-9529-6c42cf540519"}
+[info] 
+[info] === Deploying to 'kevexsolutions-tt'...
+[info] 
+[info] i  deploying firestore, hosting, auth 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-04-08T21:57:47.945Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:47.945Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:47.946Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default) [none]
+[debug] [2026-04-08T21:57:49.074Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default) 200
+[debug] [2026-04-08T21:57:49.075Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default) {"name":"projects/kevexsolutions-tt/databases/(default)","uid":"f7c35415-385f-4e90-be3b-2d98d54a960f","createTime":"2026-01-26T23:10:18.760903Z","updateTime":"2026-01-26T23:10:18.760903Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-04-08T20:57:47.444638Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IJCklOyf35MDMIzOveS05pID"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-04-08T21:57:49.078Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:49.079Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:49.079Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt:test [none]
+[debug] [2026-04-08T21:57:49.079Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt:test [omitted]
+[debug] [2026-04-08T21:57:49.790Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt:test 200
+[debug] [2026-04-08T21:57:49.790Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt:test {}
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-04-08T21:57:49.798Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:49.798Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:49.799Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevexbuildtools/versions [none]
+[debug] [2026-04-08T21:57:49.799Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevexbuildtools/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-04-08T21:57:52.594Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevexbuildtools/versions 200
+[debug] [2026-04-08T21:57:52.594Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevexbuildtools/versions {"name":"projects/709230096628/sites/kevexbuildtools/versions/6262926a9a19a0f7","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-04-08T21:57:52.595Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:52.595Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:52.595Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kevexsolutions-tt/webApps pageSize=100
+[debug] [2026-04-08T21:57:52.950Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kevexsolutions-tt/webApps 200
+[debug] [2026-04-08T21:57:52.950Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kevexsolutions-tt/webApps {"apps":[{"name":"projects/kevexsolutions-tt/webApps/1:709230096628:web:0ec2a80b1cfa1031066ea1","appId":"1:709230096628:web:0ec2a80b1cfa1031066ea1","displayName":"Kevex Build Tools","projectId":"kevexsolutions-tt","webId":"ZmEyMTJkZTItNWNmZC00ZGQwLWFlMjUtY2E1NzJjMjcyYjVm","apiKeyId":"c8224d39-cf31-49fe-99bd-2783c74647de","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_d68b1995-c7ae-4394-9896-239bf7b1393f"},{"name":"projects/kevexsolutions-tt/webApps/1:709230096628:web:491198af9474d329066ea1","appId":"1:709230096628:web:491198af9474d329066ea1","displayName":"Kevex Job Board","projectId":"kevexsolutions-tt","webId":"YjViODZkZWQtYmQ3Mi00ZTc5LWFhYjAtYzg4NTVjMTMzMGYy","apiKeyId":"c8224d39-cf31-49fe-99bd-2783c74647de","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_dccf4dba-8f02-4041-8598-4497a87dc316"},{"name":"projects/kevexsolutions-tt/webApps/1:709230096628:web:ed13e71926a140e9066ea1","appId":"1:709230096628:web:ed13e71926a140e9066ea1","displayName":"kevexsolutions-tt","projectId":"kevexsolutions-tt","webId":"YTg4M2JlZDctMjk1Ny00OThmLTlhYjEtMzllYzg3YjljZGVj","apiKeyId":"727f6011-2364-4c2d-9928-1d4b905348dc","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_434b750e-e572-4caf-8d92-0f80677e5182"}]}
+[debug] [2026-04-08T21:57:52.951Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:52.952Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:52.952Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt/releases pageSize=10&pageToken=
+[debug] [2026-04-08T21:57:53.249Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt/releases 200
+[debug] [2026-04-08T21:57:53.250Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt/releases {"releases":[{"name":"projects/kevexsolutions-tt/releases/cloud.firestore","rulesetName":"projects/kevexsolutions-tt/rulesets/9dbd6566-ccf1-4210-8da0-662df4eb19c0","createTime":"2026-01-26T23:10:21.352502Z","updateTime":"2026-03-25T16:08:16.876549Z"}]}
+[debug] [2026-04-08T21:57:53.250Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:53.250Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:53.250Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt/rulesets/9dbd6566-ccf1-4210-8da0-662df4eb19c0 [none]
+[debug] [2026-04-08T21:57:53.513Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt/rulesets/9dbd6566-ccf1-4210-8da0-662df4eb19c0 200
+[debug] [2026-04-08T21:57:53.513Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/kevexsolutions-tt/rulesets/9dbd6566-ccf1-4210-8da0-662df4eb19c0 [omitted]
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload... 
+[info] i  firestore: deploying indexes... 
+[debug] [2026-04-08T21:57:53.518Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:53.518Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:53.518Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2026-04-08T21:57:53.844Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2026-04-08T21:57:53.844Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2026-04-08T21:57:53.845Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:53.845Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:53.845Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2026-04-08T21:57:54.129Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2026-04-08T21:57:54.130Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/kevexsolutions-tt/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[debug] [2026-04-08T21:57:54.130Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:54.130Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:54.130Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default) [none]
+[debug] [2026-04-08T21:57:54.384Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default) 200
+[debug] [2026-04-08T21:57:54.384Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/kevexsolutions-tt/databases/(default) {"name":"projects/kevexsolutions-tt/databases/(default)","uid":"f7c35415-385f-4e90-be3b-2d98d54a960f","createTime":"2026-01-26T23:10:18.760903Z","updateTime":"2026-01-26T23:10:18.760903Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-04-08T20:57:52.755229Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IIq12O6f35MDMIzOveS05pID"}
+[info] +  firestore: deployed indexes in firestore.indexes.json successfully for (default) database 
+[info] i  hosting[kevexbuildtools]: beginning deploy... 
+[info] i  hosting[kevexbuildtools]: found 53 files in dist 
+[debug] [2026-04-08T21:57:54.422Z] [hosting] uploading with 200 concurrency
+[debug] [2026-04-08T21:57:54.423Z] [hosting] hash cache [ZGlzdA] not populated
+[debug] [2026-04-08T21:57:54.537Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:54.537Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:54.540Z] [hosting] hash cache [ZGlzdA] stored for 53 files
+[debug] [2026-04-08T21:57:54.541Z] [hosting][hash queue][FINAL] {"max":88,"min":30,"avg":51.58490566037736,"active":0,"complete":53,"success":53,"errored":0,"retried":0,"total":53,"elapsed":116}
+[debug] [2026-04-08T21:57:54.541Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/709230096628/sites/kevexbuildtools/versions/6262926a9a19a0f7:populateFiles [none]
+[debug] [2026-04-08T21:57:54.541Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/709230096628/sites/kevexbuildtools/versions/6262926a9a19a0f7:populateFiles {"files":{"/sw.js":"0d58a680909482fa843240b2cb7d11ec56b5a82662c1949d4232cc5d5e58a9b0","/manifest.webmanifest":"428490863e39ca1d9062db4ec90fd0c8fa8395da7b3026cc64ae20250a85dbd5","/robots.txt":"8c8992414cc7101f8c9952a566181d667e7343481f8e7b05c55103b1bfa0d899","/index.html":"2fbb19c50f64b917f2cd4ce5843f19462c7f02da669e8de923cb8269fae162c2","/img/icons/safari-pinned-tab.svg":"af4afa8918b8602895b9db35605bffcf75ddad6bb55668e80762778002de7122","/workbox-19bcba7d.js":"e6bbac10a436d0fc8e8d14a3e7e59223173b23235e990cb3b8d0e71003f4da09","/img/icons/mstile-150x150.png":"105f116eb5d721129488e209563e94ac345de1489e09008596e67f1547939e36","/favicon.ico":"3d3d5c038cc96d71c43ffff92b9bf099f92adf9d867d0849ddcc2086c63c907b","/img/icons/msapplication-icon-144x144.png":"053f2a18f911c8e69d830d8313e5cb959736fe7ddbaba4aff3cd9c0a2b2f4c3c","/img/icons/favicon-32x32.png":"8cfe5f58a49407b3752a968a9719e701a3b008e7abc2e959d310f915154704d7","/img/icons/apple-touch-icon.png":"8fd2854aa5a6854c74e21451064d75e221154a5351e2c1a8551bc1b0962a3e24","/img/icons/apple-touch-icon-60x60.png":"3ca0fea6f81cbb25718fee84f1b613e2aadf495b708478a57d74c294cf8e7ac6","/img/icons/favicon-16x16.png":"89d7ace89235cc4acb38ca6fa59f0d7d3eaa16cf18896dcc9e4702e54108dcf4","/img/icons/apple-touch-icon-76x76.png":"3e6243fc37a9487794d6505c204d7bb4786e951e1fb9e47b1d19e246927c3bbe","/img/icons/apple-touch-icon-180x180.png":"e7b027b45d03411fe5928e2f36ac7a83319984baeced90e621419ab59acbed95","/img/icons/apple-touch-icon-120x120.png":"71e184a9b18629f1e264eb7ca62aab7dcc0c53c73bc18d87f3b911edffe00f27","/assets/userProfileService-CKHMFx0v.js":"775d35d0dab5cbbbcfa9fb6909f74c296c43b2639a19a936dac51b2fddb6c131","/assets/workbox-window.prod.es5-BIl4cyR9.js":"9f74bcc5900e9b497d6e5e1c12b5a3d4dde337e6f98c36c551bb16ed34107b7f","/img/icons/apple-touch-icon-152x152.png":"245a4d28ccd21aa9b5e5af15fc8996fecb1f99162dde8fa0c65917a2808cdd0a","/assets/useCurrency-CI9eXKv-.js":"001dc3d4cdc90e85e96c66f43d0e18617c623fea9b3177b184742219baa7a1ae","/assets/RegisterPage-C2PDSoX8.css":"d9781a313cca2006cd2b276a19728d031d992af1c17a08507cf4329c4b651411","/assets/RegisterPage-9fxxiwvR.js":"65eca5f561916e2f86dd80991e2da6ceed8304ab06db7a002c5ccc40c526363a","/assets/quoteService-C-J-oDI1.js":"820e60465dc384977e0934b6a33c95c948290e6e8144a7c4dd1b9c8b3d5f97fd","/img/icons/android-chrome-192x192.png":"fc0837f46a6da289f4b39416ae943640a488f01ef111b7724ba11103f7c03ebe","/assets/QuickCalculatorsPage-D6hUxqvD.js":"430ff0981ac4ba411a86ea8008516f1d9844463b5049c30f0372d640fbe7834d","/assets/QuotesPage-D9Pm5zca.css":"6d9632a04a7389e1c145fdb91c804b9ea042d0599959c0dc17a32838d449b888","/assets/LoginPage-kYF62v4Q.css":"f546cf85eb1fe9430f94633ea8a52ad4ace98aeb055b2305b5e88ceb3e3f6694","/assets/LandingPage-DSFlWuRj.css":"eca2eebfbf296d83d4d39ac650943566f44f5bee9c740d282a4680546d5767e7","/assets/QuickCalculatorsPage-CxRN1qMP.css":"b4ad5571b92605c5d1cfa1333f5f5ac30610a73efdd71fb081f1ea57e9c12ed1","/assets/purify.es-BgtpMKW3.js":"dd3986b9edb8a889b15573796f90cdc1848ba2f9e1650a2d2e7d58b9d1c623ee","/img/icons/android-chrome-maskable-192x192.png":"d457c31bbee80e6440f4717b2c1e72eca00e0983acdc2e5a0f14420f9e129563","/assets/LoginPage-CDH9TABC.js":"59e0bc4f65309f84c6373290ad0a9613062933c17a5c7f4f25994045b8de0d7e","/assets/JobsPage-CAFNBjbr.js":"20fd564afd647508e0b68f397542ff0527f65e853a468196640065eba97e53b5","/assets/jobService-DfJaLcwv.js":"d97393bdaff11aa502078f1073841b3dedc193b9738914ed7a1fbaa3a4e6ba25","/assets/JobsPage-BjJNVLau.css":"a8180c2d6b0607e855e2f0549756ce7a05666edb88762d2737f3ff29e80609ed","/assets/LandingPage-BY7OKoaw.js":"e107649222008e568f1fec205480d3cb53083e10757093fe8d4b2f25dd865dc9","/assets/index-BJQ-gbB1.css":"5462bf99cbfad5e6b5e66dadade9609eb2ca4b0609d55879468a78dd98676943","/assets/EstimatorPage-DxAiTn0V.css":"750398991a743364afb2687857c1d0221faff36cd51561da0550e0d1ef11a721","/assets/EstimatorPage-DPubbLTA.js":"3e00d35bdb5505af60aeee8a907adc55cadc5844812da1a5fbdad513cc605385","/assets/DashboardPage-D-2oYfs9.js":"f9b72752185334c2aef80a4da9f2bb941454adf508de62fe9b8812d338cecddc","/assets/DashboardPage-2fJd6FSJ.css":"6ed456f336aaf3c65a40b9fa32be205f9c64dd39bd0c74256561b85892779e18","/assets/clientService-CRbj1Jk_.js":"4cf94dbc5c5130875f62d2126d25de0c3ee2517152fd506c5d24b26400e9619d","/assets/ClientsPage-DWy3EDH0.js":"d53a14a8c84b53a46228e74eb11977d6cd2185d8c2e1cd0a39536f2b1923beeb","/assets/ClientsPage-Boifd41_.css":"7192b13df791da8bbaf6a0f57ed95c2c53b72b45184dd2656c18824e370ad8b3","/img/icons/android-chrome-maskable-512x512.png":"3d3587b02f98b4e2661fcc84e14b2cbdd758036661a998f070330731b9c0d4e1","/img/icons/android-chrome-512x512.png":"1abed10bb966e9db85850914947661a7d96bcb630d24585e50f2a12ab9ac1889","/assets/BaseTextarea-BmnWSJFZ.js":"933d21d6bf8bc490bc2603f4c475c8884c6896d384f256ec519b7ff92167c980","/assets/BaseSelect-CVSug-jq.js":"21ed04ef7a82a5c90a354fa721c96eb8fd6e8824c2fdfd706c5a100fd3fc9422","/assets/BaseInput-AG8Kcjp8.js":"e69edf71f8bfadea47ee1c78a77fbd5823c9ac35c186dcb2173e3a48b252f4a1","/assets/index.es-b5FQvvvR.js":"de9df25bb94f48a30516c3d56d96c293372375c625b5f48b97f262a3101cd8c0","/assets/html2canvas.esm-QH1iLAAe.js":"f11fa059b23162cd079f9be9c5b6c29237e7393fcab5d04c6f2b2ac5bd7a38b3","/assets/QuotesPage-MpA7S1Ga.js":"3fc92a71b48a9597fe72b0407b1817b162948d6c510efcb6f021d9fd5d6230ea","/assets/index-iDAi3vet.js":"44e1a8217bba710b9b4f0fb03ce5292be869de8e4498523839d46f8c9e182a83"}}
+[debug] [2026-04-08T21:57:55.268Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/709230096628/sites/kevexbuildtools/versions/6262926a9a19a0f7:populateFiles 200
+[debug] [2026-04-08T21:57:55.268Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/709230096628/sites/kevexbuildtools/versions/6262926a9a19a0f7:populateFiles {"uploadRequiredHashes":["3fc92a71b48a9597fe72b0407b1817b162948d6c510efcb6f021d9fd5d6230ea","dd3986b9edb8a889b15573796f90cdc1848ba2f9e1650a2d2e7d58b9d1c623ee","de9df25bb94f48a30516c3d56d96c293372375c625b5f48b97f262a3101cd8c0","d97393bdaff11aa502078f1073841b3dedc193b9738914ed7a1fbaa3a4e6ba25","e69edf71f8bfadea47ee1c78a77fbd5823c9ac35c186dcb2173e3a48b252f4a1","245a4d28ccd21aa9b5e5af15fc8996fecb1f99162dde8fa0c65917a2808cdd0a","428490863e39ca1d9062db4ec90fd0c8fa8395da7b3026cc64ae20250a85dbd5","3e6243fc37a9487794d6505c204d7bb4786e951e1fb9e47b1d19e246927c3bbe","f11fa059b23162cd079f9be9c5b6c29237e7393fcab5d04c6f2b2ac5bd7a38b3","3d3587b02f98b4e2661fcc84e14b2cbdd758036661a998f070330731b9c0d4e1","8c8992414cc7101f8c9952a566181d667e7343481f8e7b05c55103b1bfa0d899","d9781a313cca2006cd2b276a19728d031d992af1c17a08507cf4329c4b651411","3ca0fea6f81cbb25718fee84f1b613e2aadf495b708478a57d74c294cf8e7ac6","71e184a9b18629f1e264eb7ca62aab7dcc0c53c73bc18d87f3b911edffe00f27","fc0837f46a6da289f4b39416ae943640a488f01ef111b7724ba11103f7c03ebe","e107649222008e568f1fec205480d3cb53083e10757093fe8d4b2f25dd865dc9","820e60465dc384977e0934b6a33c95c948290e6e8144a7c4dd1b9c8b3d5f97fd","e7b027b45d03411fe5928e2f36ac7a83319984baeced90e621419ab59acbed95","6ed456f336aaf3c65a40b9fa32be205f9c64dd39bd0c74256561b85892779e18","1abed10bb966e9db85850914947661a7d96bcb630d24585e50f2a12ab9ac1889","e6bbac10a436d0fc8e8d14a3e7e59223173b23235e990cb3b8d0e71003f4da09","65eca5f561916e2f86dd80991e2da6ceed8304ab06db7a002c5ccc40c526363a","2fbb19c50f64b917f2cd4ce5843f19462c7f02da669e8de923cb8269fae162c2","775d35d0dab5cbbbcfa9fb6909f74c296c43b2639a19a936dac51b2fddb6c131","0d58a680909482fa843240b2cb7d11ec56b5a82662c1949d4232cc5d5e58a9b0","750398991a743364afb2687857c1d0221faff36cd51561da0550e0d1ef11a721","001dc3d4cdc90e85e96c66f43d0e18617c623fea9b3177b184742219baa7a1ae","f9b72752185334c2aef80a4da9f2bb941454adf508de62fe9b8812d338cecddc","21ed04ef7a82a5c90a354fa721c96eb8fd6e8824c2fdfd706c5a100fd3fc9422","105f116eb5d721129488e209563e94ac345de1489e09008596e67f1547939e36","6d9632a04a7389e1c145fdb91c804b9ea042d0599959c0dc17a32838d449b888","89d7ace89235cc4acb38ca6fa59f0d7d3eaa16cf18896dcc9e4702e54108dcf4","3d3d5c038cc96d71c43ffff92b9bf099f92adf9d867d0849ddcc2086c63c907b","b4ad5571b92605c5d1cfa1333f5f5ac30610a73efdd71fb081f1ea57e9c12ed1","8cfe5f58a49407b3752a968a9719e701a3b008e7abc2e959d310f915154704d7","7192b13df791da8bbaf6a0f57ed95c2c53b72b45184dd2656c18824e370ad8b3","59e0bc4f65309f84c6373290ad0a9613062933c17a5c7f4f25994045b8de0d7e","f546cf85eb1fe9430f94633ea8a52ad4ace98aeb055b2305b5e88ceb3e3f6694","3e00d35bdb5505af60aeee8a907adc55cadc5844812da1a5fbdad513cc605385","5462bf99cbfad5e6b5e66dadade9609eb2ca4b0609d55879468a78dd98676943","a8180c2d6b0607e855e2f0549756ce7a05666edb88762d2737f3ff29e80609ed","d53a14a8c84b53a46228e74eb11977d6cd2185d8c2e1cd0a39536f2b1923beeb","8fd2854aa5a6854c74e21451064d75e221154a5351e2c1a8551bc1b0962a3e24","20fd564afd647508e0b68f397542ff0527f65e853a468196640065eba97e53b5","053f2a18f911c8e69d830d8313e5cb959736fe7ddbaba4aff3cd9c0a2b2f4c3c","d457c31bbee80e6440f4717b2c1e72eca00e0983acdc2e5a0f14420f9e129563","44e1a8217bba710b9b4f0fb03ce5292be869de8e4498523839d46f8c9e182a83","9f74bcc5900e9b497d6e5e1c12b5a3d4dde337e6f98c36c551bb16ed34107b7f","430ff0981ac4ba411a86ea8008516f1d9844463b5049c30f0372d640fbe7834d","4cf94dbc5c5130875f62d2126d25de0c3ee2517152fd506c5d24b26400e9619d","af4afa8918b8602895b9db35605bffcf75ddad6bb55668e80762778002de7122","eca2eebfbf296d83d4d39ac650943566f44f5bee9c740d282a4680546d5767e7","933d21d6bf8bc490bc2603f4c475c8884c6896d384f256ec519b7ff92167c980"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files"}
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.269Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.270Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.271Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.272Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.273Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.274Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.274Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.274Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.274Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.274Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.275Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.275Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.276Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.277Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.278Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.278Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.278Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.278Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.278Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.278Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.279Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.279Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.280Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.280Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.280Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.280Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.281Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.281Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.281Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.281Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.281Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.282Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.282Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.282Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.282Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.283Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.283Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.283Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.283Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.283Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.283Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.284Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.285Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.285Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.285Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:55.285Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3fc92a71b48a9597fe72b0407b1817b162948d6c510efcb6f021d9fd5d6230ea [none]
+[debug] [2026-04-08T21:57:55.285Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3fc92a71b48a9597fe72b0407b1817b162948d6c510efcb6f021d9fd5d6230ea [stream]
+[debug] [2026-04-08T21:57:55.287Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/dd3986b9edb8a889b15573796f90cdc1848ba2f9e1650a2d2e7d58b9d1c623ee [none]
+[debug] [2026-04-08T21:57:55.287Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/dd3986b9edb8a889b15573796f90cdc1848ba2f9e1650a2d2e7d58b9d1c623ee [stream]
+[debug] [2026-04-08T21:57:55.288Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/de9df25bb94f48a30516c3d56d96c293372375c625b5f48b97f262a3101cd8c0 [none]
+[debug] [2026-04-08T21:57:55.289Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/de9df25bb94f48a30516c3d56d96c293372375c625b5f48b97f262a3101cd8c0 [stream]
+[debug] [2026-04-08T21:57:55.290Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d97393bdaff11aa502078f1073841b3dedc193b9738914ed7a1fbaa3a4e6ba25 [none]
+[debug] [2026-04-08T21:57:55.290Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d97393bdaff11aa502078f1073841b3dedc193b9738914ed7a1fbaa3a4e6ba25 [stream]
+[debug] [2026-04-08T21:57:55.293Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e69edf71f8bfadea47ee1c78a77fbd5823c9ac35c186dcb2173e3a48b252f4a1 [none]
+[debug] [2026-04-08T21:57:55.293Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e69edf71f8bfadea47ee1c78a77fbd5823c9ac35c186dcb2173e3a48b252f4a1 [stream]
+[debug] [2026-04-08T21:57:55.295Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/245a4d28ccd21aa9b5e5af15fc8996fecb1f99162dde8fa0c65917a2808cdd0a [none]
+[debug] [2026-04-08T21:57:55.295Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/245a4d28ccd21aa9b5e5af15fc8996fecb1f99162dde8fa0c65917a2808cdd0a [stream]
+[debug] [2026-04-08T21:57:55.297Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/428490863e39ca1d9062db4ec90fd0c8fa8395da7b3026cc64ae20250a85dbd5 [none]
+[debug] [2026-04-08T21:57:55.297Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/428490863e39ca1d9062db4ec90fd0c8fa8395da7b3026cc64ae20250a85dbd5 [stream]
+[debug] [2026-04-08T21:57:55.299Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e6243fc37a9487794d6505c204d7bb4786e951e1fb9e47b1d19e246927c3bbe [none]
+[debug] [2026-04-08T21:57:55.299Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e6243fc37a9487794d6505c204d7bb4786e951e1fb9e47b1d19e246927c3bbe [stream]
+[debug] [2026-04-08T21:57:55.301Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f11fa059b23162cd079f9be9c5b6c29237e7393fcab5d04c6f2b2ac5bd7a38b3 [none]
+[debug] [2026-04-08T21:57:55.301Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f11fa059b23162cd079f9be9c5b6c29237e7393fcab5d04c6f2b2ac5bd7a38b3 [stream]
+[debug] [2026-04-08T21:57:55.302Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3587b02f98b4e2661fcc84e14b2cbdd758036661a998f070330731b9c0d4e1 [none]
+[debug] [2026-04-08T21:57:55.302Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3587b02f98b4e2661fcc84e14b2cbdd758036661a998f070330731b9c0d4e1 [stream]
+[debug] [2026-04-08T21:57:55.304Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8c8992414cc7101f8c9952a566181d667e7343481f8e7b05c55103b1bfa0d899 [none]
+[debug] [2026-04-08T21:57:55.304Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8c8992414cc7101f8c9952a566181d667e7343481f8e7b05c55103b1bfa0d899 [stream]
+[debug] [2026-04-08T21:57:55.306Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d9781a313cca2006cd2b276a19728d031d992af1c17a08507cf4329c4b651411 [none]
+[debug] [2026-04-08T21:57:55.306Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d9781a313cca2006cd2b276a19728d031d992af1c17a08507cf4329c4b651411 [stream]
+[debug] [2026-04-08T21:57:55.307Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3ca0fea6f81cbb25718fee84f1b613e2aadf495b708478a57d74c294cf8e7ac6 [none]
+[debug] [2026-04-08T21:57:55.307Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3ca0fea6f81cbb25718fee84f1b613e2aadf495b708478a57d74c294cf8e7ac6 [stream]
+[debug] [2026-04-08T21:57:55.309Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/71e184a9b18629f1e264eb7ca62aab7dcc0c53c73bc18d87f3b911edffe00f27 [none]
+[debug] [2026-04-08T21:57:55.309Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/71e184a9b18629f1e264eb7ca62aab7dcc0c53c73bc18d87f3b911edffe00f27 [stream]
+[debug] [2026-04-08T21:57:55.311Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/fc0837f46a6da289f4b39416ae943640a488f01ef111b7724ba11103f7c03ebe [none]
+[debug] [2026-04-08T21:57:55.311Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/fc0837f46a6da289f4b39416ae943640a488f01ef111b7724ba11103f7c03ebe [stream]
+[debug] [2026-04-08T21:57:55.313Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e107649222008e568f1fec205480d3cb53083e10757093fe8d4b2f25dd865dc9 [none]
+[debug] [2026-04-08T21:57:55.313Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e107649222008e568f1fec205480d3cb53083e10757093fe8d4b2f25dd865dc9 [stream]
+[debug] [2026-04-08T21:57:55.315Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/820e60465dc384977e0934b6a33c95c948290e6e8144a7c4dd1b9c8b3d5f97fd [none]
+[debug] [2026-04-08T21:57:55.315Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/820e60465dc384977e0934b6a33c95c948290e6e8144a7c4dd1b9c8b3d5f97fd [stream]
+[debug] [2026-04-08T21:57:55.316Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e7b027b45d03411fe5928e2f36ac7a83319984baeced90e621419ab59acbed95 [none]
+[debug] [2026-04-08T21:57:55.317Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e7b027b45d03411fe5928e2f36ac7a83319984baeced90e621419ab59acbed95 [stream]
+[debug] [2026-04-08T21:57:55.318Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6ed456f336aaf3c65a40b9fa32be205f9c64dd39bd0c74256561b85892779e18 [none]
+[debug] [2026-04-08T21:57:55.318Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6ed456f336aaf3c65a40b9fa32be205f9c64dd39bd0c74256561b85892779e18 [stream]
+[debug] [2026-04-08T21:57:55.319Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/1abed10bb966e9db85850914947661a7d96bcb630d24585e50f2a12ab9ac1889 [none]
+[debug] [2026-04-08T21:57:55.319Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/1abed10bb966e9db85850914947661a7d96bcb630d24585e50f2a12ab9ac1889 [stream]
+[debug] [2026-04-08T21:57:55.320Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e6bbac10a436d0fc8e8d14a3e7e59223173b23235e990cb3b8d0e71003f4da09 [none]
+[debug] [2026-04-08T21:57:55.320Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e6bbac10a436d0fc8e8d14a3e7e59223173b23235e990cb3b8d0e71003f4da09 [stream]
+[debug] [2026-04-08T21:57:55.321Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/65eca5f561916e2f86dd80991e2da6ceed8304ab06db7a002c5ccc40c526363a [none]
+[debug] [2026-04-08T21:57:55.321Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/65eca5f561916e2f86dd80991e2da6ceed8304ab06db7a002c5ccc40c526363a [stream]
+[debug] [2026-04-08T21:57:55.322Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/2fbb19c50f64b917f2cd4ce5843f19462c7f02da669e8de923cb8269fae162c2 [none]
+[debug] [2026-04-08T21:57:55.322Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/2fbb19c50f64b917f2cd4ce5843f19462c7f02da669e8de923cb8269fae162c2 [stream]
+[debug] [2026-04-08T21:57:55.323Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/775d35d0dab5cbbbcfa9fb6909f74c296c43b2639a19a936dac51b2fddb6c131 [none]
+[debug] [2026-04-08T21:57:55.323Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/775d35d0dab5cbbbcfa9fb6909f74c296c43b2639a19a936dac51b2fddb6c131 [stream]
+[debug] [2026-04-08T21:57:55.325Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/0d58a680909482fa843240b2cb7d11ec56b5a82662c1949d4232cc5d5e58a9b0 [none]
+[debug] [2026-04-08T21:57:55.325Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/0d58a680909482fa843240b2cb7d11ec56b5a82662c1949d4232cc5d5e58a9b0 [stream]
+[debug] [2026-04-08T21:57:55.326Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/750398991a743364afb2687857c1d0221faff36cd51561da0550e0d1ef11a721 [none]
+[debug] [2026-04-08T21:57:55.326Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/750398991a743364afb2687857c1d0221faff36cd51561da0550e0d1ef11a721 [stream]
+[debug] [2026-04-08T21:57:55.331Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/001dc3d4cdc90e85e96c66f43d0e18617c623fea9b3177b184742219baa7a1ae [none]
+[debug] [2026-04-08T21:57:55.331Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/001dc3d4cdc90e85e96c66f43d0e18617c623fea9b3177b184742219baa7a1ae [stream]
+[debug] [2026-04-08T21:57:55.333Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f9b72752185334c2aef80a4da9f2bb941454adf508de62fe9b8812d338cecddc [none]
+[debug] [2026-04-08T21:57:55.333Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f9b72752185334c2aef80a4da9f2bb941454adf508de62fe9b8812d338cecddc [stream]
+[debug] [2026-04-08T21:57:55.334Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/21ed04ef7a82a5c90a354fa721c96eb8fd6e8824c2fdfd706c5a100fd3fc9422 [none]
+[debug] [2026-04-08T21:57:55.334Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/21ed04ef7a82a5c90a354fa721c96eb8fd6e8824c2fdfd706c5a100fd3fc9422 [stream]
+[debug] [2026-04-08T21:57:55.336Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/105f116eb5d721129488e209563e94ac345de1489e09008596e67f1547939e36 [none]
+[debug] [2026-04-08T21:57:55.336Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/105f116eb5d721129488e209563e94ac345de1489e09008596e67f1547939e36 [stream]
+[debug] [2026-04-08T21:57:55.337Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6d9632a04a7389e1c145fdb91c804b9ea042d0599959c0dc17a32838d449b888 [none]
+[debug] [2026-04-08T21:57:55.337Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6d9632a04a7389e1c145fdb91c804b9ea042d0599959c0dc17a32838d449b888 [stream]
+[debug] [2026-04-08T21:57:55.338Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/89d7ace89235cc4acb38ca6fa59f0d7d3eaa16cf18896dcc9e4702e54108dcf4 [none]
+[debug] [2026-04-08T21:57:55.338Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/89d7ace89235cc4acb38ca6fa59f0d7d3eaa16cf18896dcc9e4702e54108dcf4 [stream]
+[debug] [2026-04-08T21:57:55.339Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3d5c038cc96d71c43ffff92b9bf099f92adf9d867d0849ddcc2086c63c907b [none]
+[debug] [2026-04-08T21:57:55.339Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3d5c038cc96d71c43ffff92b9bf099f92adf9d867d0849ddcc2086c63c907b [stream]
+[debug] [2026-04-08T21:57:55.340Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/b4ad5571b92605c5d1cfa1333f5f5ac30610a73efdd71fb081f1ea57e9c12ed1 [none]
+[debug] [2026-04-08T21:57:55.340Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/b4ad5571b92605c5d1cfa1333f5f5ac30610a73efdd71fb081f1ea57e9c12ed1 [stream]
+[debug] [2026-04-08T21:57:55.341Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8cfe5f58a49407b3752a968a9719e701a3b008e7abc2e959d310f915154704d7 [none]
+[debug] [2026-04-08T21:57:55.341Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8cfe5f58a49407b3752a968a9719e701a3b008e7abc2e959d310f915154704d7 [stream]
+[debug] [2026-04-08T21:57:55.342Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/7192b13df791da8bbaf6a0f57ed95c2c53b72b45184dd2656c18824e370ad8b3 [none]
+[debug] [2026-04-08T21:57:55.342Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/7192b13df791da8bbaf6a0f57ed95c2c53b72b45184dd2656c18824e370ad8b3 [stream]
+[debug] [2026-04-08T21:57:55.343Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/59e0bc4f65309f84c6373290ad0a9613062933c17a5c7f4f25994045b8de0d7e [none]
+[debug] [2026-04-08T21:57:55.344Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/59e0bc4f65309f84c6373290ad0a9613062933c17a5c7f4f25994045b8de0d7e [stream]
+[debug] [2026-04-08T21:57:55.346Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f546cf85eb1fe9430f94633ea8a52ad4ace98aeb055b2305b5e88ceb3e3f6694 [none]
+[debug] [2026-04-08T21:57:55.346Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f546cf85eb1fe9430f94633ea8a52ad4ace98aeb055b2305b5e88ceb3e3f6694 [stream]
+[debug] [2026-04-08T21:57:55.351Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e00d35bdb5505af60aeee8a907adc55cadc5844812da1a5fbdad513cc605385 [none]
+[debug] [2026-04-08T21:57:55.351Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e00d35bdb5505af60aeee8a907adc55cadc5844812da1a5fbdad513cc605385 [stream]
+[debug] [2026-04-08T21:57:55.352Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/5462bf99cbfad5e6b5e66dadade9609eb2ca4b0609d55879468a78dd98676943 [none]
+[debug] [2026-04-08T21:57:55.352Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/5462bf99cbfad5e6b5e66dadade9609eb2ca4b0609d55879468a78dd98676943 [stream]
+[debug] [2026-04-08T21:57:55.353Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/a8180c2d6b0607e855e2f0549756ce7a05666edb88762d2737f3ff29e80609ed [none]
+[debug] [2026-04-08T21:57:55.353Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/a8180c2d6b0607e855e2f0549756ce7a05666edb88762d2737f3ff29e80609ed [stream]
+[debug] [2026-04-08T21:57:55.354Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d53a14a8c84b53a46228e74eb11977d6cd2185d8c2e1cd0a39536f2b1923beeb [none]
+[debug] [2026-04-08T21:57:55.355Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d53a14a8c84b53a46228e74eb11977d6cd2185d8c2e1cd0a39536f2b1923beeb [stream]
+[debug] [2026-04-08T21:57:55.356Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8fd2854aa5a6854c74e21451064d75e221154a5351e2c1a8551bc1b0962a3e24 [none]
+[debug] [2026-04-08T21:57:55.356Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8fd2854aa5a6854c74e21451064d75e221154a5351e2c1a8551bc1b0962a3e24 [stream]
+[debug] [2026-04-08T21:57:55.357Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/20fd564afd647508e0b68f397542ff0527f65e853a468196640065eba97e53b5 [none]
+[debug] [2026-04-08T21:57:55.357Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/20fd564afd647508e0b68f397542ff0527f65e853a468196640065eba97e53b5 [stream]
+[debug] [2026-04-08T21:57:55.358Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/053f2a18f911c8e69d830d8313e5cb959736fe7ddbaba4aff3cd9c0a2b2f4c3c [none]
+[debug] [2026-04-08T21:57:55.358Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/053f2a18f911c8e69d830d8313e5cb959736fe7ddbaba4aff3cd9c0a2b2f4c3c [stream]
+[debug] [2026-04-08T21:57:55.360Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d457c31bbee80e6440f4717b2c1e72eca00e0983acdc2e5a0f14420f9e129563 [none]
+[debug] [2026-04-08T21:57:55.360Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d457c31bbee80e6440f4717b2c1e72eca00e0983acdc2e5a0f14420f9e129563 [stream]
+[debug] [2026-04-08T21:57:55.363Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/44e1a8217bba710b9b4f0fb03ce5292be869de8e4498523839d46f8c9e182a83 [none]
+[debug] [2026-04-08T21:57:55.363Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/44e1a8217bba710b9b4f0fb03ce5292be869de8e4498523839d46f8c9e182a83 [stream]
+[debug] [2026-04-08T21:57:55.365Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/9f74bcc5900e9b497d6e5e1c12b5a3d4dde337e6f98c36c551bb16ed34107b7f [none]
+[debug] [2026-04-08T21:57:55.365Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/9f74bcc5900e9b497d6e5e1c12b5a3d4dde337e6f98c36c551bb16ed34107b7f [stream]
+[debug] [2026-04-08T21:57:55.366Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/430ff0981ac4ba411a86ea8008516f1d9844463b5049c30f0372d640fbe7834d [none]
+[debug] [2026-04-08T21:57:55.366Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/430ff0981ac4ba411a86ea8008516f1d9844463b5049c30f0372d640fbe7834d [stream]
+[debug] [2026-04-08T21:57:55.368Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/4cf94dbc5c5130875f62d2126d25de0c3ee2517152fd506c5d24b26400e9619d [none]
+[debug] [2026-04-08T21:57:55.368Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/4cf94dbc5c5130875f62d2126d25de0c3ee2517152fd506c5d24b26400e9619d [stream]
+[debug] [2026-04-08T21:57:55.369Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/af4afa8918b8602895b9db35605bffcf75ddad6bb55668e80762778002de7122 [none]
+[debug] [2026-04-08T21:57:55.369Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/af4afa8918b8602895b9db35605bffcf75ddad6bb55668e80762778002de7122 [stream]
+[debug] [2026-04-08T21:57:55.370Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/eca2eebfbf296d83d4d39ac650943566f44f5bee9c740d282a4680546d5767e7 [none]
+[debug] [2026-04-08T21:57:55.371Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/eca2eebfbf296d83d4d39ac650943566f44f5bee9c740d282a4680546d5767e7 [stream]
+[debug] [2026-04-08T21:57:55.372Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/933d21d6bf8bc490bc2603f4c475c8884c6896d384f256ec519b7ff92167c980 [none]
+[debug] [2026-04-08T21:57:55.372Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/933d21d6bf8bc490bc2603f4c475c8884c6896d384f256ec519b7ff92167c980 [stream]
+[debug] [2026-04-08T21:57:55.373Z] [hosting][populate queue][FINAL] {"max":749,"min":749,"avg":749,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":837}
+[debug] [2026-04-08T21:57:55.374Z] [hosting] uploads queued: 53
+[debug] [2026-04-08T21:57:56.297Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/71e184a9b18629f1e264eb7ca62aab7dcc0c53c73bc18d87f3b911edffe00f27 200
+[debug] [2026-04-08T21:57:56.297Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/71e184a9b18629f1e264eb7ca62aab7dcc0c53c73bc18d87f3b911edffe00f27 [stream]
+[debug] [2026-04-08T21:57:56.322Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e7b027b45d03411fe5928e2f36ac7a83319984baeced90e621419ab59acbed95 200
+[debug] [2026-04-08T21:57:56.322Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e7b027b45d03411fe5928e2f36ac7a83319984baeced90e621419ab59acbed95 [stream]
+[debug] [2026-04-08T21:57:56.330Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e6243fc37a9487794d6505c204d7bb4786e951e1fb9e47b1d19e246927c3bbe 200
+[debug] [2026-04-08T21:57:56.330Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e6243fc37a9487794d6505c204d7bb4786e951e1fb9e47b1d19e246927c3bbe [stream]
+[debug] [2026-04-08T21:57:56.336Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/dd3986b9edb8a889b15573796f90cdc1848ba2f9e1650a2d2e7d58b9d1c623ee 200
+[debug] [2026-04-08T21:57:56.336Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/dd3986b9edb8a889b15573796f90cdc1848ba2f9e1650a2d2e7d58b9d1c623ee [stream]
+[debug] [2026-04-08T21:57:56.342Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e6bbac10a436d0fc8e8d14a3e7e59223173b23235e990cb3b8d0e71003f4da09 200
+[debug] [2026-04-08T21:57:56.342Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e6bbac10a436d0fc8e8d14a3e7e59223173b23235e990cb3b8d0e71003f4da09 [stream]
+[debug] [2026-04-08T21:57:56.345Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/9f74bcc5900e9b497d6e5e1c12b5a3d4dde337e6f98c36c551bb16ed34107b7f 200
+[debug] [2026-04-08T21:57:56.345Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/9f74bcc5900e9b497d6e5e1c12b5a3d4dde337e6f98c36c551bb16ed34107b7f [stream]
+[debug] [2026-04-08T21:57:56.359Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3ca0fea6f81cbb25718fee84f1b613e2aadf495b708478a57d74c294cf8e7ac6 200
+[debug] [2026-04-08T21:57:56.359Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3ca0fea6f81cbb25718fee84f1b613e2aadf495b708478a57d74c294cf8e7ac6 [stream]
+[debug] [2026-04-08T21:57:56.368Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d457c31bbee80e6440f4717b2c1e72eca00e0983acdc2e5a0f14420f9e129563 200
+[debug] [2026-04-08T21:57:56.368Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d457c31bbee80e6440f4717b2c1e72eca00e0983acdc2e5a0f14420f9e129563 [stream]
+[debug] [2026-04-08T21:57:56.430Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/428490863e39ca1d9062db4ec90fd0c8fa8395da7b3026cc64ae20250a85dbd5 200
+[debug] [2026-04-08T21:57:56.430Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/428490863e39ca1d9062db4ec90fd0c8fa8395da7b3026cc64ae20250a85dbd5 [stream]
+[debug] [2026-04-08T21:57:56.440Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3587b02f98b4e2661fcc84e14b2cbdd758036661a998f070330731b9c0d4e1 200
+[debug] [2026-04-08T21:57:56.440Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3587b02f98b4e2661fcc84e14b2cbdd758036661a998f070330731b9c0d4e1 [stream]
+[debug] [2026-04-08T21:57:56.441Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/245a4d28ccd21aa9b5e5af15fc8996fecb1f99162dde8fa0c65917a2808cdd0a 200
+[debug] [2026-04-08T21:57:56.441Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/245a4d28ccd21aa9b5e5af15fc8996fecb1f99162dde8fa0c65917a2808cdd0a [stream]
+[debug] [2026-04-08T21:57:56.443Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/2fbb19c50f64b917f2cd4ce5843f19462c7f02da669e8de923cb8269fae162c2 200
+[debug] [2026-04-08T21:57:56.443Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/2fbb19c50f64b917f2cd4ce5843f19462c7f02da669e8de923cb8269fae162c2 [stream]
+[debug] [2026-04-08T21:57:56.446Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8cfe5f58a49407b3752a968a9719e701a3b008e7abc2e959d310f915154704d7 200
+[debug] [2026-04-08T21:57:56.446Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8cfe5f58a49407b3752a968a9719e701a3b008e7abc2e959d310f915154704d7 [stream]
+[debug] [2026-04-08T21:57:56.448Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/fc0837f46a6da289f4b39416ae943640a488f01ef111b7724ba11103f7c03ebe 200
+[debug] [2026-04-08T21:57:56.448Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/fc0837f46a6da289f4b39416ae943640a488f01ef111b7724ba11103f7c03ebe [stream]
+[debug] [2026-04-08T21:57:56.452Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/5462bf99cbfad5e6b5e66dadade9609eb2ca4b0609d55879468a78dd98676943 200
+[debug] [2026-04-08T21:57:56.452Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/5462bf99cbfad5e6b5e66dadade9609eb2ca4b0609d55879468a78dd98676943 [stream]
+[debug] [2026-04-08T21:57:56.468Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8fd2854aa5a6854c74e21451064d75e221154a5351e2c1a8551bc1b0962a3e24 200
+[debug] [2026-04-08T21:57:56.468Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8fd2854aa5a6854c74e21451064d75e221154a5351e2c1a8551bc1b0962a3e24 [stream]
+[debug] [2026-04-08T21:57:56.473Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/1abed10bb966e9db85850914947661a7d96bcb630d24585e50f2a12ab9ac1889 200
+[debug] [2026-04-08T21:57:56.473Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/1abed10bb966e9db85850914947661a7d96bcb630d24585e50f2a12ab9ac1889 [stream]
+[debug] [2026-04-08T21:57:56.485Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e107649222008e568f1fec205480d3cb53083e10757093fe8d4b2f25dd865dc9 200
+[debug] [2026-04-08T21:57:56.485Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e107649222008e568f1fec205480d3cb53083e10757093fe8d4b2f25dd865dc9 [stream]
+[debug] [2026-04-08T21:57:56.486Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8c8992414cc7101f8c9952a566181d667e7343481f8e7b05c55103b1bfa0d899 200
+[debug] [2026-04-08T21:57:56.486Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/8c8992414cc7101f8c9952a566181d667e7343481f8e7b05c55103b1bfa0d899 [stream]
+[debug] [2026-04-08T21:57:56.487Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d53a14a8c84b53a46228e74eb11977d6cd2185d8c2e1cd0a39536f2b1923beeb 200
+[debug] [2026-04-08T21:57:56.487Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d53a14a8c84b53a46228e74eb11977d6cd2185d8c2e1cd0a39536f2b1923beeb [stream]
+[debug] [2026-04-08T21:57:56.489Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/105f116eb5d721129488e209563e94ac345de1489e09008596e67f1547939e36 200
+[debug] [2026-04-08T21:57:56.489Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/105f116eb5d721129488e209563e94ac345de1489e09008596e67f1547939e36 [stream]
+[debug] [2026-04-08T21:57:56.509Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3d5c038cc96d71c43ffff92b9bf099f92adf9d867d0849ddcc2086c63c907b 200
+[debug] [2026-04-08T21:57:56.509Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3d3d5c038cc96d71c43ffff92b9bf099f92adf9d867d0849ddcc2086c63c907b [stream]
+[debug] [2026-04-08T21:57:56.510Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f11fa059b23162cd079f9be9c5b6c29237e7393fcab5d04c6f2b2ac5bd7a38b3 200
+[debug] [2026-04-08T21:57:56.510Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f11fa059b23162cd079f9be9c5b6c29237e7393fcab5d04c6f2b2ac5bd7a38b3 [stream]
+[debug] [2026-04-08T21:57:56.514Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e00d35bdb5505af60aeee8a907adc55cadc5844812da1a5fbdad513cc605385 200
+[debug] [2026-04-08T21:57:56.514Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3e00d35bdb5505af60aeee8a907adc55cadc5844812da1a5fbdad513cc605385 [stream]
+[debug] [2026-04-08T21:57:56.525Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/0d58a680909482fa843240b2cb7d11ec56b5a82662c1949d4232cc5d5e58a9b0 200
+[debug] [2026-04-08T21:57:56.525Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/0d58a680909482fa843240b2cb7d11ec56b5a82662c1949d4232cc5d5e58a9b0 [stream]
+[debug] [2026-04-08T21:57:56.529Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/775d35d0dab5cbbbcfa9fb6909f74c296c43b2639a19a936dac51b2fddb6c131 200
+[debug] [2026-04-08T21:57:56.529Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/775d35d0dab5cbbbcfa9fb6909f74c296c43b2639a19a936dac51b2fddb6c131 [stream]
+[debug] [2026-04-08T21:57:56.533Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f9b72752185334c2aef80a4da9f2bb941454adf508de62fe9b8812d338cecddc 200
+[debug] [2026-04-08T21:57:56.533Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f9b72752185334c2aef80a4da9f2bb941454adf508de62fe9b8812d338cecddc [stream]
+[debug] [2026-04-08T21:57:56.534Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6d9632a04a7389e1c145fdb91c804b9ea042d0599959c0dc17a32838d449b888 200
+[debug] [2026-04-08T21:57:56.534Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6d9632a04a7389e1c145fdb91c804b9ea042d0599959c0dc17a32838d449b888 [stream]
+[debug] [2026-04-08T21:57:56.552Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d9781a313cca2006cd2b276a19728d031d992af1c17a08507cf4329c4b651411 200
+[debug] [2026-04-08T21:57:56.552Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d9781a313cca2006cd2b276a19728d031d992af1c17a08507cf4329c4b651411 [stream]
+[debug] [2026-04-08T21:57:56.562Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d97393bdaff11aa502078f1073841b3dedc193b9738914ed7a1fbaa3a4e6ba25 200
+[debug] [2026-04-08T21:57:56.563Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/d97393bdaff11aa502078f1073841b3dedc193b9738914ed7a1fbaa3a4e6ba25 [stream]
+[debug] [2026-04-08T21:57:56.610Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/933d21d6bf8bc490bc2603f4c475c8884c6896d384f256ec519b7ff92167c980 200
+[debug] [2026-04-08T21:57:56.611Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/933d21d6bf8bc490bc2603f4c475c8884c6896d384f256ec519b7ff92167c980 [stream]
+[debug] [2026-04-08T21:57:56.621Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6ed456f336aaf3c65a40b9fa32be205f9c64dd39bd0c74256561b85892779e18 200
+[debug] [2026-04-08T21:57:56.622Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/6ed456f336aaf3c65a40b9fa32be205f9c64dd39bd0c74256561b85892779e18 [stream]
+[debug] [2026-04-08T21:57:56.622Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/af4afa8918b8602895b9db35605bffcf75ddad6bb55668e80762778002de7122 200
+[debug] [2026-04-08T21:57:56.623Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/af4afa8918b8602895b9db35605bffcf75ddad6bb55668e80762778002de7122 [stream]
+[debug] [2026-04-08T21:57:56.629Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/4cf94dbc5c5130875f62d2126d25de0c3ee2517152fd506c5d24b26400e9619d 200
+[debug] [2026-04-08T21:57:56.629Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/4cf94dbc5c5130875f62d2126d25de0c3ee2517152fd506c5d24b26400e9619d [stream]
+[debug] [2026-04-08T21:57:56.631Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/eca2eebfbf296d83d4d39ac650943566f44f5bee9c740d282a4680546d5767e7 200
+[debug] [2026-04-08T21:57:56.631Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/eca2eebfbf296d83d4d39ac650943566f44f5bee9c740d282a4680546d5767e7 [stream]
+[debug] [2026-04-08T21:57:56.643Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/89d7ace89235cc4acb38ca6fa59f0d7d3eaa16cf18896dcc9e4702e54108dcf4 200
+[debug] [2026-04-08T21:57:56.643Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/89d7ace89235cc4acb38ca6fa59f0d7d3eaa16cf18896dcc9e4702e54108dcf4 [stream]
+[debug] [2026-04-08T21:57:56.654Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/a8180c2d6b0607e855e2f0549756ce7a05666edb88762d2737f3ff29e80609ed 200
+[debug] [2026-04-08T21:57:56.654Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/a8180c2d6b0607e855e2f0549756ce7a05666edb88762d2737f3ff29e80609ed [stream]
+[debug] [2026-04-08T21:57:56.656Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e69edf71f8bfadea47ee1c78a77fbd5823c9ac35c186dcb2173e3a48b252f4a1 200
+[debug] [2026-04-08T21:57:56.656Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/e69edf71f8bfadea47ee1c78a77fbd5823c9ac35c186dcb2173e3a48b252f4a1 [stream]
+[debug] [2026-04-08T21:57:56.657Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/750398991a743364afb2687857c1d0221faff36cd51561da0550e0d1ef11a721 200
+[debug] [2026-04-08T21:57:56.657Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/750398991a743364afb2687857c1d0221faff36cd51561da0550e0d1ef11a721 [stream]
+[debug] [2026-04-08T21:57:56.673Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/de9df25bb94f48a30516c3d56d96c293372375c625b5f48b97f262a3101cd8c0 200
+[debug] [2026-04-08T21:57:56.674Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/de9df25bb94f48a30516c3d56d96c293372375c625b5f48b97f262a3101cd8c0 [stream]
+[debug] [2026-04-08T21:57:56.682Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/430ff0981ac4ba411a86ea8008516f1d9844463b5049c30f0372d640fbe7834d 200
+[debug] [2026-04-08T21:57:56.682Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/430ff0981ac4ba411a86ea8008516f1d9844463b5049c30f0372d640fbe7834d [stream]
+[debug] [2026-04-08T21:57:56.683Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/053f2a18f911c8e69d830d8313e5cb959736fe7ddbaba4aff3cd9c0a2b2f4c3c 200
+[debug] [2026-04-08T21:57:56.683Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/053f2a18f911c8e69d830d8313e5cb959736fe7ddbaba4aff3cd9c0a2b2f4c3c [stream]
+[debug] [2026-04-08T21:57:56.700Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/001dc3d4cdc90e85e96c66f43d0e18617c623fea9b3177b184742219baa7a1ae 200
+[debug] [2026-04-08T21:57:56.701Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/001dc3d4cdc90e85e96c66f43d0e18617c623fea9b3177b184742219baa7a1ae [stream]
+[debug] [2026-04-08T21:57:56.718Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/7192b13df791da8bbaf6a0f57ed95c2c53b72b45184dd2656c18824e370ad8b3 200
+[debug] [2026-04-08T21:57:56.718Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/7192b13df791da8bbaf6a0f57ed95c2c53b72b45184dd2656c18824e370ad8b3 [stream]
+[debug] [2026-04-08T21:57:56.737Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/59e0bc4f65309f84c6373290ad0a9613062933c17a5c7f4f25994045b8de0d7e 200
+[debug] [2026-04-08T21:57:56.737Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/59e0bc4f65309f84c6373290ad0a9613062933c17a5c7f4f25994045b8de0d7e [stream]
+[debug] [2026-04-08T21:57:56.781Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3fc92a71b48a9597fe72b0407b1817b162948d6c510efcb6f021d9fd5d6230ea 200
+[debug] [2026-04-08T21:57:56.781Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/3fc92a71b48a9597fe72b0407b1817b162948d6c510efcb6f021d9fd5d6230ea [stream]
+[debug] [2026-04-08T21:57:56.798Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f546cf85eb1fe9430f94633ea8a52ad4ace98aeb055b2305b5e88ceb3e3f6694 200
+[debug] [2026-04-08T21:57:56.798Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/f546cf85eb1fe9430f94633ea8a52ad4ace98aeb055b2305b5e88ceb3e3f6694 [stream]
+[debug] [2026-04-08T21:57:56.827Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/65eca5f561916e2f86dd80991e2da6ceed8304ab06db7a002c5ccc40c526363a 200
+[debug] [2026-04-08T21:57:56.827Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/65eca5f561916e2f86dd80991e2da6ceed8304ab06db7a002c5ccc40c526363a [stream]
+[debug] [2026-04-08T21:57:56.835Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/820e60465dc384977e0934b6a33c95c948290e6e8144a7c4dd1b9c8b3d5f97fd 200
+[debug] [2026-04-08T21:57:56.835Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/820e60465dc384977e0934b6a33c95c948290e6e8144a7c4dd1b9c8b3d5f97fd [stream]
+[debug] [2026-04-08T21:57:56.855Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/b4ad5571b92605c5d1cfa1333f5f5ac30610a73efdd71fb081f1ea57e9c12ed1 200
+[debug] [2026-04-08T21:57:56.855Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/b4ad5571b92605c5d1cfa1333f5f5ac30610a73efdd71fb081f1ea57e9c12ed1 [stream]
+[debug] [2026-04-08T21:57:56.866Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/21ed04ef7a82a5c90a354fa721c96eb8fd6e8824c2fdfd706c5a100fd3fc9422 200
+[debug] [2026-04-08T21:57:56.866Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/21ed04ef7a82a5c90a354fa721c96eb8fd6e8824c2fdfd706c5a100fd3fc9422 [stream]
+[debug] [2026-04-08T21:57:56.867Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/20fd564afd647508e0b68f397542ff0527f65e853a468196640065eba97e53b5 200
+[debug] [2026-04-08T21:57:56.867Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/20fd564afd647508e0b68f397542ff0527f65e853a468196640065eba97e53b5 [stream]
+[debug] [2026-04-08T21:57:57.103Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/44e1a8217bba710b9b4f0fb03ce5292be869de8e4498523839d46f8c9e182a83 200
+[debug] [2026-04-08T21:57:57.103Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kevexbuildtools/versions/6262926a9a19a0f7/files/44e1a8217bba710b9b4f0fb03ce5292be869de8e4498523839d46f8c9e182a83 [stream]
+[debug] [2026-04-08T21:57:57.103Z] [hosting][upload queue][FINAL] {"max":1820,"min":1025,"avg":1295.8867924528304,"active":0,"complete":53,"success":53,"errored":0,"retried":0,"total":53,"elapsed":1835}
+[info] +  hosting[kevexbuildtools]: file upload complete 
+[debug] [2026-04-08T21:57:57.104Z] [hosting] deploy completed after 2715ms
+[info] Enabling auth providers: anonymous, email/password, Google sign-in...
+[debug] [2026-04-08T21:57:57.106Z] [provision] Starting Firebase app provisioning...
+[debug] [2026-04-08T21:57:57.106Z] [provision] Request: {
+  "appNamespace": "1:709230096628:web:0ec2a80b1cfa1031066ea1",
+  "parent": "projects/kevexsolutions-tt",
+  "firebaseAuthInput": {
+    "anonymousAuthProviderMode": "PROVIDER_ENABLED",
+    "emailAuthProviderMode": "PROVIDER_ENABLED",
+    "googleSigninProviderMode": "PROVIDER_ENABLED",
+    "googleSigninProviderConfig": {
+      "publicDisplayName": "Kevex Build Tools",
+      "customerSupportEmail": ""
+    }
+  },
+  "webInput": {}
+}
+[debug] [2026-04-08T21:57:57.106Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:57.106Z] Checked if tokens are valid: true, expires at: 1775689065244
+[debug] [2026-04-08T21:57:57.106Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp [none]
+[debug] [2026-04-08T21:57:57.106Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp {"appNamespace":"1:709230096628:web:0ec2a80b1cfa1031066ea1","parent":"projects/kevexsolutions-tt","firebaseAuthInput":{"anonymousAuthProviderMode":"PROVIDER_ENABLED","emailAuthProviderMode":"PROVIDER_ENABLED","googleSigninProviderMode":"PROVIDER_ENABLED","googleSigninProviderConfig":{"publicDisplayName":"Kevex Build Tools","customerSupportEmail":""}},"webInput":{}}
+[debug] [2026-04-08T21:57:57.461Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp 400
+[debug] [2026-04-08T21:57:57.461Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp {"error":{"code":400,"message":"Both public display name and customer support email must be provided for Google Sign-In brand configuration, or neither if the project already has the OAuth Brand set.","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"INVALID_GOOGLE_SIGN_IN_BRAND_CONFIG","domain":"firebase.googleapis.com"},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Link to edit the OAuth brand in Google Cloud Console","url":"https://console.cloud.google.com/auth/branding"}]}]}}
+[debug] [2026-04-08T21:57:57.991Z] FirebaseError: Request to https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp had HTTP Error: 400, Both public display name and customer support email must be provided for Google Sign-In brand configuration, or neither if the project already has the OAuth Brand set.
+    at responseToError (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:53:12)
+    at RetryOperation._fn (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:333:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+[error] 
+[error] Error: Failed to provision Firebase app: Request to https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp had HTTP Error: 400, Both public display name and customer support email must be provided for Google Sign-In brand configuration, or neither if the project already has the OAuth Brand set.
+
+Error details:
+  Reason: INVALID_GOOGLE_SIGN_IN_BRAND_CONFIG
+  Domain: firebase.googleapis.com
+
+For help resolving this issue:
+  - Link to edit the OAuth brand in Google Cloud Console
+    https://console.cloud.google.com/auth/branding

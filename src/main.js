@@ -1,7 +1,11 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import { registerSW } from 'virtual:pwa-register'
 import App from './App.vue'
-import './registerServiceWorker'
 import router from './router'
-import store from './store'
+import './styles/base.scss'
+import './styles/forms.scss'
 
-createApp(App).use(store).use(router).mount('#app')
+registerSW({ immediate: true })
+
+createApp(App).use(createPinia()).use(router).mount('#app')

@@ -1,7 +1,7 @@
 export function useCurrency() {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'TTD',
     minimumFractionDigits: 2
   })
 

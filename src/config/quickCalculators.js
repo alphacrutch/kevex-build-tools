@@ -2,7 +2,7 @@ const quickCalculators = [
   {
     id: 'tile',
     name: 'Tile Coverage',
-    summary: 'Estimate tile boxes, grout bags, and a starter material total for one room.',
+    summary: 'Estimate tile boxes, grout bags, and material total for a quick room quote.',
     fields: [
       { key: 'roomArea', label: 'Room Area (sqft)', type: 'number', min: 0, step: 'any' },
       { key: 'tileCoverage', label: 'Coverage Per Box (sqft)', type: 'number', min: 0, step: 'any' },
@@ -32,42 +32,65 @@ const quickCalculators = [
     }
   },
   {
-    id: 'paint',
-    name: 'Paint Planner',
-    summary: 'Work out gallons, primer, and starter paint cost for a quick repaint.',
+    id: 'pipes',
+    name: 'Pipe Run',
+    summary: 'Calculate adjusted pipe length, fittings, and a rough plumbing material budget.',
     fields: [
-      { key: 'wallArea', label: 'Paintable Area (sqft)', type: 'number', min: 0, step: 'any' },
-      { key: 'coveragePerGallon', label: 'Coverage Per Gallon', type: 'number', min: 0, step: 'any' },
-      { key: 'paintPrice', label: 'Paint Price Per Gallon', type: 'number', min: 0, step: 'any' },
-      { key: 'primerCoverage', label: 'Primer Coverage Per Gallon', type: 'number', min: 0, step: 'any' },
-      { key: 'primerPrice', label: 'Primer Price Per Gallon', type: 'number', min: 0, step: 'any' },
-      { key: 'coats', label: 'Paint Coats', type: 'number', min: 1, step: '1' }
+      { key: 'pipeLength', label: 'Pipe Length (ft)', type: 'number', min: 0, step: 'any' },
+      { key: 'pipeCost', label: 'Pipe Cost Per Ft', type: 'number', min: 0, step: 'any' },
+      { key: 'fittings', label: 'Number of Fittings', type: 'number', min: 0, step: '1' },
+      { key: 'fittingCost', label: 'Fitting Cost Each', type: 'number', min: 0, step: 'any' },
+      { key: 'wastePercent', label: 'Waste (%)', type: 'number', min: 0, step: 'any' }
     ],
     initialValues: {
-      coats: 2
+      wastePercent: 7
     },
     calculate(values) {
-      const wallArea = Number(values.wallArea || 0)
-      const coats = Number(values.coats || 1)
-      const coveragePerGallon = Number(values.coveragePerGallon || 0)
-      const primerCoverage = Number(values.primerCoverage || 0)
-      const paintGallons = coveragePerGallon > 0 ? Math.ceil((wallArea * coats) / coveragePerGallon) : 0
-      const primerGallons = primerCoverage > 0 ? Math.ceil(wallArea / primerCoverage) : 0
-      const paintCost = paintGallons * Number(values.paintPrice || 0)
-      const primerCost = primerGallons * Number(values.primerPrice || 0)
+      const pipeLength = Number(values.pipeLength || 0)
+      const adjustedLength = pipeLength * (1 + Number(values.wastePercent || 0) / 100)
+      const fittings = Number(values.fittings || 0)
+      const pipeCost = adjustedLength * Number(values.pipeCost || 0)
+      const fittingsCost = fittings * Number(values.fittingCost || 0)
 
       return [
-        { label: 'Paint Gallons', value: String(paintGallons) },
-        { label: 'Primer Gallons', value: String(primerGallons) },
-        { label: 'Paint Cost', value: paintCost, money: true },
-        { label: 'Starter Total', value: paintCost + primerCost, money: true }
+        { label: 'Adjusted Length', value: `${adjustedLength.toFixed(1)} ft` },
+        { label: 'Fittings', value: String(fittings) },
+        { label: 'Pipe Cost', value: pipeCost, money: true },
+        { label: 'Material Total', value: pipeCost + fittingsCost, money: true }
+      ]
+    }
+  },
+  {
+    id: 'wiring',
+    name: 'Wiring Planner',
+    summary: 'Work out wire length, accessories, and a starter electrical material total.',
+    fields: [
+      { key: 'wireLength', label: 'Wire Length (ft)', type: 'number', min: 0, step: 'any' },
+      { key: 'wireCost', label: 'Wire Cost Per Ft', type: 'number', min: 0, step: 'any' },
+      { key: 'accessories', label: 'Accessories Cost', type: 'number', min: 0, step: 'any' },
+      { key: 'wastePercent', label: 'Waste (%)', type: 'number', min: 0, step: 'any' }
+    ],
+    initialValues: {
+      wastePercent: 5
+    },
+    calculate(values) {
+      const wireLength = Number(values.wireLength || 0)
+      const adjustedLength = wireLength * (1 + Number(values.wastePercent || 0) / 100)
+      const wireCost = adjustedLength * Number(values.wireCost || 0)
+      const accessories = Number(values.accessories || 0)
+
+      return [
+        { label: 'Adjusted Wire Length', value: `${adjustedLength.toFixed(1)} ft` },
+        { label: 'Wire Cost', value: wireCost, money: true },
+        { label: 'Accessories', value: accessories, money: true },
+        { label: 'Material Total', value: wireCost + accessories, money: true }
       ]
     }
   },
   {
     id: 'concrete',
-    name: 'Concrete Pour',
-    summary: 'Get a quick slab volume, bag count, and rough material budget in minutes.',
+    name: 'Concrete Bags',
+    summary: 'Get slab volume, bag count, and a quick concrete material budget.',
     fields: [
       { key: 'length', label: 'Length (ft)', type: 'number', min: 0, step: 'any' },
       { key: 'width', label: 'Width (ft)', type: 'number', min: 0, step: 'any' },
@@ -91,7 +114,6 @@ const quickCalculators = [
       const totalCost = bagCount * Number(values.bagPrice || 0)
 
       return [
-        { label: 'Pour Volume', value: `${volume.toFixed(2)} cu ft` },
         { label: 'Adjusted Volume', value: `${adjustedVolume.toFixed(2)} cu ft` },
         { label: 'Bag Count', value: String(bagCount) },
         { label: 'Material Total', value: totalCost, money: true }

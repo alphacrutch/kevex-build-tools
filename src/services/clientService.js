@@ -8,6 +8,7 @@ import {
   orderBy,
   query,
   serverTimestamp,
+  updateDoc,
   where
 } from 'firebase/firestore'
 import { db } from '@/boot/firebase'
@@ -37,4 +38,8 @@ export async function getUserClientCount(userId) {
 
 export async function deleteClient(clientId) {
   await deleteDoc(doc(db, 'clients', clientId))
+}
+
+export async function updateClient(clientId, payload) {
+  await updateDoc(doc(db, 'clients', clientId), payload)
 }

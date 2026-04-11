@@ -2,7 +2,7 @@
   <section class="panel card">
     <div class="page-header">
       <h2>Job Profit Tracker</h2>
-      <p>Track quoted value, expenses, payments, and real profit.</p>
+      <p>Track quoted value, expenses, payments, stage, and real profit per job.</p>
     </div>
 
     <div v-if="!authStore.userId" class="empty-state">Sign in to manage jobs.</div>
@@ -12,10 +12,10 @@
       <article v-for="job in jobs" :key="job.id" class="job-card card">
         <div class="job-head">
           <div>
-            <h3>{{ job.clientName || 'Unnamed Client' }}</h3>
-            <p>{{ job.serviceName }} · {{ job.status }}</p>
+            <h3>{{ job.title || job.clientName || 'Unnamed Job' }}</h3>
+            <p>{{ job.serviceName }} | {{ job.status }}</p>
           </div>
-          <strong>{{ formatCurrency(Number(jobDrafts[job.id]?.profit || 0)) }}</strong>
+          <strong>{{ formatCurrency(calculateProfit(jobDrafts[job.id])) }}</strong>
         </div>
 
         <div class="two-col-grid">
@@ -34,11 +34,17 @@
             min="0"
             step="any"
           />
+          <BaseSelect v-model="jobDrafts[job.id].stage" label="Job Stage" :options="stageOptions" />
         </div>
+
+        <BaseTextarea v-model="jobDrafts[job.id].notes" label="Site Notes" rows="3" />
 
         <div class="actions-row job-actions">
           <span>Calculated Profit: <strong>{{ formatCurrency(calculateProfit(jobDrafts[job.id])) }}</strong></span>
-          <BaseButton @click="saveJob(job.id)">Save</BaseButton>
+          <div class="actions-row">
+            <BaseButton @click="saveJob(job.id)">Save</BaseButton>
+            <BaseButton variant="outline" @click="removeJob(job.id)">Delete</BaseButton>
+          </div>
         </div>
       </article>
     </div>
@@ -47,12 +53,12 @@
 
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
-import { doc, updateDoc } from 'firebase/firestore'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseInput from '@/components/BaseInput.vue'
-import { db } from '@/boot/firebase'
+import BaseSelect from '@/components/BaseSelect.vue'
+import BaseTextarea from '@/components/BaseTextarea.vue'
 import { useCurrency } from '@/composables/useCurrency'
-import { getUserJobs } from '@/services/jobService'
+import { deleteJob, getUserJobs, updateJob } from '@/services/jobService'
 import { useAuthStore } from '@/stores/authStore'
 
 const authStore = useAuthStore()
@@ -60,6 +66,13 @@ const { formatCurrency } = useCurrency()
 const jobs = ref([])
 const loading = ref(false)
 const jobDrafts = reactive({})
+
+const stageOptions = [
+  { value: 'quoted', label: 'Quoted' },
+  { value: 'scheduled', label: 'Scheduled' },
+  { value: 'in-progress', label: 'In Progress' },
+  { value: 'completed', label: 'Completed' }
+]
 
 const calculateProfit = (job) => Number(job?.amountReceived || 0) - Number(job?.actualExpenses || 0)
 
@@ -69,7 +82,9 @@ const hydrateDrafts = () => {
       quotedTotal: Number(job.quotedTotal || 0),
       actualExpenses: Number(job.actualExpenses || 0),
       amountReceived: Number(job.amountReceived || 0),
-      profit: Number(job.profit || 0)
+      profit: Number(job.profit || 0),
+      stage: job.stage || 'quoted',
+      notes: job.notes || ''
     }
   })
 }
@@ -84,30 +99,31 @@ const loadJobs = async () => {
   try {
     jobs.value = await getUserJobs(authStore.userId)
     hydrateDrafts()
-  } catch (error) {
-    console.error('Failed to load jobs', error)
   } finally {
     loading.value = false
   }
 }
 
 const saveJob = async (jobId) => {
-  try {
-    const draft = jobDrafts[jobId]
-    const profit = calculateProfit(draft)
+  const draft = jobDrafts[jobId]
+  const profit = calculateProfit(draft)
 
-    await updateDoc(doc(db, 'jobs', jobId), {
-      quotedTotal: Number(draft.quotedTotal || 0),
-      actualExpenses: Number(draft.actualExpenses || 0),
-      amountReceived: Number(draft.amountReceived || 0),
-      profit
-    })
+  await updateJob(jobId, {
+    quotedTotal: Number(draft.quotedTotal || 0),
+    actualExpenses: Number(draft.actualExpenses || 0),
+    amountReceived: Number(draft.amountReceived || 0),
+    profit,
+    stage: draft.stage,
+    notes: draft.notes
+  })
 
-    draft.profit = profit
-    await loadJobs()
-  } catch (error) {
-    window.alert(error.message || 'Failed to update job.')
-  }
+  draft.profit = profit
+  await loadJobs()
+}
+
+const removeJob = async (jobId) => {
+  await deleteJob(jobId)
+  await loadJobs()
 }
 
 onMounted(loadJobs)

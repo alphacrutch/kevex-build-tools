@@ -4,9 +4,15 @@
       <div class="brand-block">
         <div class="brand-logo">K</div>
         <div>
-          <h1>Kevex ProBuild</h1>
-          <p>Estimate. Track. Profit.</p>
+          <h1>Kevex Build Tools</h1>
+          <p>Quote. Track. Invoice.</p>
         </div>
+      </div>
+
+      <div v-if="workspaceProfile" class="workspace-card card">
+        <strong>{{ workspaceProfile.businessName || 'Your Workspace' }}</strong>
+        <p>{{ activePlan.name }} Plan</p>
+        <span>{{ workspaceProfile.quoteCredits || 0 }} credits available</span>
       </div>
 
       <nav class="nav-list">
@@ -21,8 +27,9 @@
     <div class="main-area">
       <header class="topbar card">
         <button class="menu-btn" type="button" @click="sidebarOpen = !sidebarOpen">Menu</button>
-        <div>
-          <strong>Kevex ProBuild Suite</strong>
+        <div class="topbar-copy">
+          <strong>Contractor command center</strong>
+          <p>Use quotes, jobs, invoices, and credits from one workspace.</p>
         </div>
       </header>
 
@@ -34,34 +41,51 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import BaseButton from '@/components/BaseButton.vue'
+import { getPlanById } from '@/config/plans'
+import { getUserProfile } from '@/services/userProfileService'
 import { useAuthStore } from '@/stores/authStore'
 
 const sidebarOpen = ref(false)
 const router = useRouter()
 const authStore = useAuthStore()
+const workspaceProfile = ref(null)
 
 const navItems = [
   { to: '/app/dashboard', label: 'Dashboard' },
   { to: '/app/estimator', label: 'Estimator' },
   { to: '/app/quotes', label: 'Quotes' },
   { to: '/app/clients', label: 'Clients' },
-  { to: '/app/jobs', label: 'Jobs' }
+  { to: '/app/jobs', label: 'Jobs' },
+  { to: '/app/invoices', label: 'Invoices' },
+  { to: '/app/billing', label: 'Billing & Credits' }
 ]
+
+const activePlan = computed(() => getPlanById(workspaceProfile.value?.planId))
+
+const loadWorkspace = async () => {
+  if (!authStore.userId) {
+    return
+  }
+
+  workspaceProfile.value = await getUserProfile(authStore.userId)
+}
 
 const handleLogout = async () => {
   await authStore.logout()
   router.push('/login')
 }
+
+onMounted(loadWorkspace)
 </script>
 
 <style scoped lang="scss">
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
   background:
     radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 36%),
     linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
@@ -76,7 +100,7 @@ const handleLogout = async () => {
   padding: 2rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.25rem;
   backdrop-filter: blur(14px);
 }
 
@@ -98,15 +122,21 @@ const handleLogout = async () => {
   font-weight: 800;
 }
 
-.brand-block h1 {
+.brand-block h1,
+.workspace-card strong {
   margin: 0;
-  font-size: 1.15rem;
 }
 
-.brand-block p {
+.brand-block p,
+.workspace-card p,
+.workspace-card span,
+.topbar-copy p {
   margin: 0.35rem 0 0;
-  font-size: 0.92rem;
   color: var(--muted);
+}
+
+.workspace-card {
+  padding: 1rem;
 }
 
 .nav-list {
@@ -145,6 +175,10 @@ const handleLogout = async () => {
   position: sticky;
   top: 1rem;
   z-index: 20;
+}
+
+.topbar-copy strong {
+  display: block;
 }
 
 .page-wrap {

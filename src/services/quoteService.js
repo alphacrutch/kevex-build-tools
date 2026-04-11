@@ -17,6 +17,7 @@ const quotesCollection = collection(db, 'quotes')
 
 export async function createQuote(payload) {
   const docRef = await addDoc(quotesCollection, {
+    quoteNumber: payload.quoteNumber || `QTE-${Date.now().toString().slice(-6)}`,
     ...payload,
     createdAt: serverTimestamp()
   })
@@ -42,4 +43,8 @@ export async function updateQuoteStatus(quoteId, status) {
 
 export async function deleteQuote(quoteId) {
   await deleteDoc(doc(db, 'quotes', quoteId))
+}
+
+export async function updateQuote(quoteId, payload) {
+  await updateDoc(doc(db, 'quotes', quoteId), payload)
 }

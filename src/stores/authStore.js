@@ -1,12 +1,18 @@
 import { defineStore } from 'pinia'
 import {
   createUserWithEmailAndPassword,
+  getAdditionalUserInfo,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile
 } from 'firebase/auth'
 import { auth } from '@/boot/firebase'
+
+const googleProvider = new GoogleAuthProvider()
+googleProvider.setCustomParameters({ prompt: 'select_account' })
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -65,6 +71,21 @@ export const useAuthStore = defineStore('auth', {
 
         this.user = auth.currentUser
         return this.user
+      } finally {
+        this.loading = false
+      }
+    },
+    async loginWithGoogle() {
+      this.loading = true
+
+      try {
+        const credentials = await signInWithPopup(auth, googleProvider)
+        this.user = credentials.user
+
+        return {
+          user: credentials.user,
+          isNewUser: getAdditionalUserInfo(credentials)?.isNewUser ?? false
+        }
       } finally {
         this.loading = false
       }

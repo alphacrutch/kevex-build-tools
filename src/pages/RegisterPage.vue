@@ -22,6 +22,14 @@
           <p>Set up the owner profile, business basics, and growth context in one pass.</p>
         </div>
 
+        <div class="social-actions">
+          <button class="social-btn" type="button" :disabled="authStore.loading" @click="handleGoogleRegister">
+            <span class="social-btn__mark">G</span>
+            <span>Continue with Google</span>
+          </button>
+          <p class="helper-text">Prefer email and password? Complete the form below.</p>
+        </div>
+
         <form class="form-grid" @submit.prevent="handleRegister">
           <section class="section-block">
             <h3>Owner access</h3>
@@ -107,6 +115,7 @@ import BaseSelect from '@/components/BaseSelect.vue'
 import BaseTextarea from '@/components/BaseTextarea.vue'
 import { useAuthStore } from '@/stores/authStore'
 import { createUserProfile } from '@/services/userProfileService'
+import { ensureUserProfile } from '@/services/userProfileService'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -244,6 +253,40 @@ const handleRegister = async () => {
     errorMessage.value = error.message || 'Failed to create your account.'
   }
 }
+
+const handleGoogleRegister = async () => {
+  errorMessage.value = ''
+
+  try {
+    const { user } = await authStore.loginWithGoogle()
+
+    await ensureUserProfile(user.uid, {
+      ownerFirstName: user.displayName?.split(' ')[0] ?? '',
+      ownerLastName: user.displayName?.split(' ').slice(1).join(' ') ?? '',
+      ownerFullName: user.displayName ?? '',
+      email: user.email ?? '',
+      phone: user.phoneNumber ?? '',
+      businessName: '',
+      operatingRegion: '',
+      primaryTrade: 'general-construction',
+      teamSize: 'solo',
+      businessStage: 'starting-out',
+      monthlyQuoteVolume: '0-10',
+      address: '',
+      website: '',
+      taxId: '',
+      revenueRange: 'pre-revenue',
+      heardAboutUs: 'google',
+      primaryGoals: '',
+      marketingConsent: false,
+      authProvider: 'google'
+    })
+
+    router.push('/app/dashboard')
+  } catch (error) {
+    errorMessage.value = error.message || 'Google sign-in failed.'
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -300,6 +343,47 @@ const handleRegister = async () => {
 
 .section-block h3 {
   margin: 0;
+}
+
+.social-actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 999px;
+  background: white;
+  padding: 0.95rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.social-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(31, 111, 120, 0.4);
+}
+
+.social-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.social-btn__mark {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #f3f4f6;
+  color: #0f172a;
+  font-weight: 800;
 }
 
 .check-row {

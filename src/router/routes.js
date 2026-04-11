@@ -56,6 +56,16 @@ const routes = [
         path: 'jobs',
         name: 'jobs',
         component: () => import('@/pages/JobsPage.vue')
+      },
+      {
+        path: 'invoices',
+        name: 'invoices',
+        component: () => import('@/pages/InvoicesPage.vue')
+      },
+      {
+        path: 'billing',
+        name: 'billing',
+        component: () => import('@/pages/BillingPage.vue')
       }
     ]
   },

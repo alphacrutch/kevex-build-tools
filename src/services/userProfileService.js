@@ -1,15 +1,52 @@
 import { doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { db } from '@/boot/firebase'
+import { buildDefaultBillingState } from './billingService'
+
+function buildWorkspaceDefaults(payload) {
+  return {
+    ...buildDefaultBillingState(),
+    companyCurrency: 'TTD',
+    invoicePrefix: 'INV',
+    quotePrefix: 'QTE',
+    whatsappNumber: '',
+    ...payload
+  }
+}
 
 export async function createUserProfile(userId, payload) {
   const userRef = doc(db, 'users', userId)
 
   await setDoc(userRef, {
-    ...payload,
+    ...buildWorkspaceDefaults(payload),
     onboardingCompleted: true,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp()
   })
+}
+
+export async function ensureUserProfile(userId, payload) {
+  const userRef = doc(db, 'users', userId)
+  const snapshot = await getDoc(userRef)
+
+  if (snapshot.exists()) {
+    return {
+      id: snapshot.id,
+      ...snapshot.data()
+    }
+  }
+
+  await setDoc(userRef, {
+    ...buildWorkspaceDefaults(payload),
+    onboardingCompleted: true,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  })
+
+  return {
+    id: userId,
+    ...payload,
+    onboardingCompleted: true
+  }
 }
 
 export async function getUserProfile(userId) {

@@ -5,14 +5,14 @@
         <span class="brand__badge">K</span>
         <span>
           <strong>Kevex Build Tools</strong>
-          <small>Quote faster. Close smarter.</small>
+          <small>Quote jobs. Track profit. Send invoices.</small>
         </span>
       </RouterLink>
 
       <nav class="landing-nav__actions">
         <RouterLink class="nav-link" to="/calculators">Calculators</RouterLink>
         <RouterLink class="nav-link" to="/login">Login</RouterLink>
-        <RouterLink class="btn btn--primary" to="/register">Register</RouterLink>
+        <RouterLink class="btn btn--primary" to="/register">Start Free</RouterLink>
       </nav>
     </header>
 
@@ -20,16 +20,23 @@
       <section class="hero">
         <div class="hero__copy">
           <p class="eyebrow">Built for contractors and trade teams</p>
-          <h1>Estimate, onboard, and convert clients from one clean workflow.</h1>
+          <h1>Generate quotes in minutes and track every dollar on the job.</h1>
           <p class="hero__lede">
-            Kevex helps you move from quick job math to real client records, saved quotes, and repeatable
-            project delivery without losing the details that make a business profitable.
+            Kevex helps contractors price jobs faster, calculate materials automatically, save clients,
+            monitor job profit, and send clean professional invoices from one simple workspace.
           </p>
 
           <div class="actions-row hero__actions">
-            <RouterLink class="btn btn--primary" to="/register">Create Your Account</RouterLink>
+            <RouterLink class="btn btn--primary" to="/register">Create Free Workspace</RouterLink>
             <RouterLink class="btn btn--outline" to="/calculators">Try Free Calculators</RouterLink>
+            <button class="btn btn--outline" type="button" :disabled="!canInstall || installLoading" @click="handleInstall">
+              {{ installButtonLabel }}
+            </button>
           </div>
+
+          <p class="install-note">
+            {{ installMessage }}
+          </p>
 
           <div class="hero__highlights">
             <div v-for="item in highlights" :key="item.title" class="highlight-card card">
@@ -40,47 +47,46 @@
         </div>
 
         <aside class="hero__panel card">
-          <p class="panel__eyebrow">What new accounts unlock</p>
-          <h2>From one-off visitors to qualified clients</h2>
+          <p class="panel__eyebrow">What the app handles</p>
+          <h2>Quote, track, invoice, repeat.</h2>
 
           <ul class="panel-list">
-            <li>Unlimited calculators and saved quote history</li>
-            <li>Structured client records for future job work</li>
-            <li>Business profile data to support onboarding, billing, and product fit</li>
+            <li>Trade-based estimators for tiling, plumbing, electrical, painting, and concrete</li>
+            <li>Automatic material quantities with waste percentage built in</li>
+            <li>Client records, job tracking, invoices, and quote credits in one app</li>
           </ul>
 
           <div class="panel__cta">
-            <RouterLink class="btn btn--primary btn--full" to="/register">Start Free Setup</RouterLink>
+            <RouterLink class="btn btn--primary btn--full" to="/register">Launch Starter Plan</RouterLink>
           </div>
         </aside>
       </section>
 
       <section class="funnel-grid">
         <article class="funnel-card card">
-          <p class="eyebrow">1. Capture</p>
-          <h3>Create your company profile</h3>
-          <p>
-            Add your owner, company, trade, and operating details once so your workspace is ready for quoting,
-            clients, and future jobs.
-          </p>
+          <p class="eyebrow">1. Estimate</p>
+          <h3>Enter job type, dimensions, and material details</h3>
+          <p>The app returns materials needed, labor estimate, total cost, and profit margin.</p>
         </article>
 
         <article class="funnel-card card">
-          <p class="eyebrow">2. Estimate</p>
-          <h3>Run quick numbers with confidence</h3>
-          <p>
-            Use the free calculators for quick one-time planning, then unlock unlimited access when you are ready
-            to save quotes and work faster.
-          </p>
+          <p class="eyebrow">2. Convert</p>
+          <h3>Turn estimates into saved quotes and invoices</h3>
+          <p>Export PDFs, share on WhatsApp, and keep reusable templates for repeat work.</p>
         </article>
 
         <article class="funnel-card card">
-          <p class="eyebrow">3. Manage</p>
-          <h3>Run quotes, clients, and jobs in one system</h3>
-          <p>
-            Keep your estimating, client records, and active jobs connected in one place so every project is easier
-            to track from first quote to final delivery.
-          </p>
+          <p class="eyebrow">3. Grow</p>
+          <h3>Track active jobs, expenses, and profit per client</h3>
+          <p>See which jobs are making money and use credit top-ups when your quote volume spikes.</p>
+        </article>
+      </section>
+
+      <section class="pricing-grid">
+        <article v-for="plan in plans" :key="plan.name" class="pricing-card card">
+          <p class="eyebrow">{{ plan.name }}</p>
+          <h3>{{ plan.price }}</h3>
+          <p>{{ plan.copy }}</p>
         </article>
       </section>
     </main>
@@ -88,20 +94,97 @@
 </template>
 
 <script setup>
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+
+const deferredPrompt = ref(null)
+const canInstall = ref(false)
+const installLoading = ref(false)
+const installAccepted = ref(false)
+
 const highlights = [
   {
-    title: 'Fast estimating',
-    copy: 'Start with quick calculators for common project planning without needing a full account first.'
+    title: 'Generate quotes in minutes',
+    copy: 'Move from dimensions and material type to a full quote summary without rebuilding the math every time.'
   },
   {
-    title: 'Organized client data',
-    copy: 'Store the business and customer details you need for smoother quoting and follow-up.'
+    title: 'Track costs and profits',
+    copy: 'Update expenses and payments received so each job shows you the real profit left on the table.'
   },
   {
-    title: 'One connected workspace',
-    copy: 'Move from estimates to clients and jobs without jumping between disconnected tools.'
+    title: 'Send professional invoices',
+    copy: 'Create polished PDF invoices and keep client balances organized inside the same workspace.'
   }
 ]
+
+const plans = [
+  { name: 'Starter', price: 'Free', copy: '3 quotes per month, basic calculator, and a clean contractor workflow.' },
+  { name: 'Pro', price: '$40 TTD / month', copy: 'Unlimited quotes, material calculator, PDF export, and job tracking.' },
+  { name: 'Business', price: '$100 TTD / month', copy: 'Profit tracking, client database, priority support, and credit-ready scaling.' }
+]
+
+const installButtonLabel = computed(() => {
+  if (installLoading.value) {
+    return 'Installing...'
+  }
+
+  if (installAccepted.value) {
+    return 'App Installed'
+  }
+
+  return canInstall.value ? 'Install App' : 'Install Unavailable'
+})
+
+const installMessage = computed(() => {
+  if (installAccepted.value) {
+    return 'Kevex Build Tools has been added to this device, or the browser reported a successful install flow.'
+  }
+
+  if (canInstall.value) {
+    return 'Install the app on this device for a full-screen experience and faster return access.'
+  }
+
+  return 'Install becomes available when the browser supports PWA install prompts and the app meets install criteria.'
+})
+
+const handleBeforeInstallPrompt = (event) => {
+  event.preventDefault()
+  deferredPrompt.value = event
+  canInstall.value = true
+}
+
+const handleAppInstalled = () => {
+  installAccepted.value = true
+  deferredPrompt.value = null
+  canInstall.value = false
+}
+
+const handleInstall = async () => {
+  if (!deferredPrompt.value) {
+    return
+  }
+
+  installLoading.value = true
+
+  try {
+    await deferredPrompt.value.prompt()
+    const choiceResult = await deferredPrompt.value.userChoice
+    installAccepted.value = choiceResult?.outcome === 'accepted'
+    canInstall.value = false
+    deferredPrompt.value = null
+  } finally {
+    installLoading.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+  window.addEventListener('appinstalled', handleAppInstalled)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+  window.removeEventListener('appinstalled', handleAppInstalled)
+})
 </script>
 
 <style scoped lang="scss">
@@ -116,7 +199,8 @@ const highlights = [
 
 .landing-nav,
 .hero,
-.funnel-grid {
+.funnel-grid,
+.pricing-grid {
   width: min(1180px, 100%);
   margin: 0 auto;
 }
@@ -203,28 +287,46 @@ const highlights = [
   margin-top: 1.5rem;
 }
 
-.hero__highlights {
+.install-note {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+.hero__highlights,
+.funnel-grid,
+.pricing-grid {
   display: grid;
+  gap: 1rem;
+}
+
+.hero__highlights {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.9rem;
   margin-top: 1.5rem;
+}
+
+.funnel-grid,
+.pricing-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-bottom: 2rem;
 }
 
 .highlight-card,
 .hero__panel,
-.funnel-card {
+.funnel-card,
+.pricing-card {
   padding: 1.35rem;
 }
 
-.highlight-card {
+.highlight-card,
+.pricing-card {
   background: rgba(255, 255, 255, 0.75);
 }
 
 .highlight-card p,
 .hero__panel p,
-.section-heading p,
-.calculator-picker p,
-.funnel-card p {
+.funnel-card p,
+.pricing-card p {
   color: var(--muted);
 }
 
@@ -233,7 +335,6 @@ const highlights = [
     linear-gradient(180deg, rgba(19, 78, 74, 0.98), rgba(17, 24, 39, 0.96)),
     #112030;
   color: white;
-  align-self: stretch;
 }
 
 .hero__panel h2 {
@@ -252,30 +353,17 @@ const highlights = [
   margin-top: 1.5rem;
 }
 
-.funnel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  padding: 0 0 2rem;
-}
-
-.funnel-card h3 {
-  margin: 0;
-  font-size: 1.35rem;
-}
-
 @media (max-width: 960px) {
-  .hero,
-  .calculator-workspace,
-  .funnel-grid,
-  .hero__highlights,
-  .calculator-grid {
-    grid-template-columns: 1fr;
+  .landing-nav,
+  .hero {
+    flex-direction: column;
   }
 
-  .landing-nav {
-    flex-direction: column;
-    align-items: flex-start;
+  .hero,
+  .hero__highlights,
+  .funnel-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

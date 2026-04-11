@@ -1,10 +1,13 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   getDocs,
   orderBy,
   query,
   serverTimestamp,
+  updateDoc,
   where
 } from 'firebase/firestore'
 import { db } from '@/boot/firebase'
@@ -24,6 +27,8 @@ export async function createJobFromQuote(quote) {
   return createJob({
     userId: quote.userId,
     quoteId: quote.id,
+    clientId: quote.clientId ?? null,
+    title: quote.title || `${quote.serviceName} Job`,
     clientName: quote.clientName || '',
     serviceId: quote.serviceId,
     serviceName: quote.serviceName,
@@ -31,7 +36,9 @@ export async function createJobFromQuote(quote) {
     actualExpenses: 0,
     amountReceived: 0,
     profit: 0,
-    status: 'active'
+    stage: 'quoted',
+    status: 'active',
+    notes: ''
   })
 }
 
@@ -47,8 +54,17 @@ export async function getUserJobSummary(userId) {
     (summary, job) => {
       summary.totalJobs += 1
       summary.totalProfit += Number(job.profit || 0)
+      summary.amountReceived += Number(job.amountReceived || 0)
       return summary
     },
-    { totalJobs: 0, totalProfit: 0 }
+    { totalJobs: 0, totalProfit: 0, amountReceived: 0 }
   )
+}
+
+export async function updateJob(jobId, payload) {
+  await updateDoc(doc(db, 'jobs', jobId), payload)
+}
+
+export async function deleteJob(jobId) {
+  await deleteDoc(doc(db, 'jobs', jobId))
 }

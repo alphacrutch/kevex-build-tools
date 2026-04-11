@@ -25,8 +25,8 @@
       "anonymous": true,
       "emailPassword": true,
       "googleSignIn": {
-        "oAuthBrandDisplayName": "Kevex Build Tools",
-        "supportEmail": ""
+        "oAuthBrandDisplayName": "Kevex Solutions",
+        "supportEmail": "support@undefined.firebaseapp.com"
       }
     }
   }

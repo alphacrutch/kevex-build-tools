@@ -2,61 +2,180 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() {
+    function isSignedIn() {
       return request.auth != null;
     }
 
     function isOwner(userId) {
-      return signedIn() && request.auth.uid == userId;
+      return isSignedIn() && request.auth.uid == userId;
     }
 
-    function creatingOwnedDoc() {
-      return signedIn() && request.resource.data.userId == request.auth.uid;
+    function incomingDocOwnedBy(fieldName) {
+      return isSignedIn()
+        && request.resource.data[fieldName] is string
+        && request.resource.data[fieldName] == request.auth.uid;
     }
 
-    function existingOwnedDoc() {
-      return signedIn() && resource.data.userId == request.auth.uid;
+    function existingDocOwnedBy(fieldName) {
+      return isSignedIn()
+        && resource.data[fieldName] is string
+        && resource.data[fieldName] == request.auth.uid;
+    }
+
+    function ownerFieldPreserved(fieldName) {
+      return request.resource.data[fieldName] == resource.data[fieldName];
+    }
+
+    function adminConfigPath() {
+      return /databases/$(database)/documents/admin/credentials;
+    }
+
+    function adminConfigExists() {
+      return exists(adminConfigPath());
+    }
+
+    function adminMapHasEmail(mapName) {
+      return get(adminConfigPath()).data[mapName] is map
+        && get(adminConfigPath()).data[mapName][request.auth.token.email] == true;
+    }
+
+    function isWhitelistedAdmin() {
+      return isSignedIn()
+        && request.auth.token.email is string
+        && adminConfigExists()
+        && (
+          adminMapHasEmail('allowedEmails')
+          || adminMapHasEmail('admins')
+          || adminMapHasEmail('users')
+        );
+    }
+
+    function validProgress() {
+      return request.resource.data.progressPercent is number
+        && request.resource.data.progressPercent >= 0
+        && request.resource.data.progressPercent <= 100;
+    }
+
+    function validStatus() {
+      return request.resource.data.status is string
+        && request.resource.data.status.size() > 0;
+    }
+
+    function hasOptionalString(fieldName) {
+      return !request.resource.data.keys().hasAny([fieldName])
+        || request.resource.data[fieldName] is string;
+    }
+
+    function ownsClientRequest() {
+      return isSignedIn()
+        && resource.data.clientUid is string
+        && resource.data.clientUid == request.auth.uid;
+    }
+
+    function isValidServiceRequestCreate() {
+      return request.resource.data.keys().hasOnly([
+        'categoryKey',
+        'serviceId',
+        'serviceTitle',
+        'name',
+        'email',
+        'phone',
+        'notes',
+        'clientUid',
+        'clientEmail',
+        'status',
+        'progressPercent',
+        'details',
+        'metadata',
+        'createdAt',
+        'updatedAt'
+      ])
+      && request.resource.data.categoryKey is string
+      && request.resource.data.categoryKey.size() > 0
+      && request.resource.data.serviceId is string
+      && request.resource.data.serviceId.size() > 0
+      && request.resource.data.serviceTitle is string
+      && request.resource.data.serviceTitle.size() > 0
+      && request.resource.data.name is string
+      && request.resource.data.name.size() > 1
+      && request.resource.data.email is string
+      && request.resource.data.email.size() > 3
+      && request.resource.data.phone is string
+      && request.resource.data.phone.size() > 5
+      && request.resource.data.notes is string
+      && hasOptionalString('clientUid')
+      && hasOptionalString('clientEmail')
+      && (
+        !request.resource.data.keys().hasAny(['clientUid'])
+        || (isSignedIn() && request.resource.data.clientUid == request.auth.uid)
+      )
+      && validStatus()
+      && validProgress()
+      && request.resource.data.details is map
+      && request.resource.data.metadata is map
+      && request.resource.data.createdAt is timestamp
+      && request.resource.data.updatedAt is timestamp;
+    }
+
+    match /serviceRequests/{requestId} {
+      allow create: if isValidServiceRequestCreate();
+      allow read: if isWhitelistedAdmin() || ownsClientRequest();
+      allow update, delete: if isWhitelistedAdmin();
+    }
+
+    match /servicePricing/{documentId} {
+      allow read: if documentId == 'catalog';
+      allow write: if documentId == 'catalog' && isWhitelistedAdmin();
+    }
+
+    match /admin/{documentId} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+    match /clientProfiles/{userId} {
+      allow create, read, update: if isOwner(userId);
+      allow delete: if false;
     }
 
     match /users/{userId} {
-      allow create, read: if isOwner(userId);
-      allow update: if isOwner(userId);
+      allow create, read, update: if isOwner(userId);
       allow delete: if false;
     }
 
     match /quotes/{quoteId} {
-      allow create: if creatingOwnedDoc();
-      allow read, delete: if existingOwnedDoc();
-      allow update: if existingOwnedDoc() && request.resource.data.userId == resource.data.userId;
+      allow create: if incomingDocOwnedBy('userId');
+      allow read, delete: if existingDocOwnedBy('userId');
+      allow update: if existingDocOwnedBy('userId') && ownerFieldPreserved('userId');
     }
 
     match /quoteTemplates/{templateId} {
-      allow create: if creatingOwnedDoc();
-      allow read, delete: if existingOwnedDoc();
-      allow update: if existingOwnedDoc() && request.resource.data.userId == resource.data.userId;
+      allow create: if incomingDocOwnedBy('userId');
+      allow read, delete: if existingDocOwnedBy('userId');
+      allow update: if existingDocOwnedBy('userId') && ownerFieldPreserved('userId');
     }
 
     match /clients/{clientId} {
-      allow create: if creatingOwnedDoc();
-      allow read, delete: if existingOwnedDoc();
-      allow update: if existingOwnedDoc() && request.resource.data.userId == resource.data.userId;
+      allow create: if incomingDocOwnedBy('userId');
+      allow read, delete: if existingDocOwnedBy('userId');
+      allow update: if existingDocOwnedBy('userId') && ownerFieldPreserved('userId');
     }
 
     match /jobs/{jobId} {
-      allow create: if creatingOwnedDoc();
-      allow read, delete: if existingOwnedDoc();
-      allow update: if existingOwnedDoc() && request.resource.data.userId == resource.data.userId;
+      allow create: if incomingDocOwnedBy('userId');
+      allow read, delete: if existingDocOwnedBy('userId');
+      allow update: if existingDocOwnedBy('userId') && ownerFieldPreserved('userId');
     }
 
     match /invoices/{invoiceId} {
-      allow create: if creatingOwnedDoc();
-      allow read, delete: if existingOwnedDoc();
-      allow update: if existingOwnedDoc() && request.resource.data.userId == resource.data.userId;
+      allow create: if incomingDocOwnedBy('userId');
+      allow read, delete: if existingDocOwnedBy('userId');
+      allow update: if existingDocOwnedBy('userId') && ownerFieldPreserved('userId');
     }
 
     match /creditPurchases/{purchaseId} {
-      allow create: if creatingOwnedDoc();
-      allow read: if existingOwnedDoc();
+      allow create: if incomingDocOwnedBy('userId');
+      allow read: if existingDocOwnedBy('userId');
       allow update, delete: if false;
     }
 
